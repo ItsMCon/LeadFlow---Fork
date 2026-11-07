@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>LeadFlow | Dashboard</title>
+
+    <meta name="description" content="Painel principal do LeadFlow." />
+
+    <!-- ESTILOS GERAIS -->
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+
+    <!-- ESTILO ESPECÍFICO -->
+    <link rel="stylesheet" href="../css/pages/dashboard.css" />
+  </head>
+
+  <body>
+    <div class="app-container">
+      <!-- SIDEBAR -->
+      <aside class="barra-lateral" id="barraLateral">
+        <!-- LOGO -->
+        <div class="logo">
+          <a href="dashboard.html">
+            <span class="logo-texto">LeadFlow</span>
+          </a>
+        </div>
+
+        <!-- NAVEGAÇÃO -->
+        <nav class="navegacao">
+          <span class="nav-titulo">MENU PRINCIPAL</span>
+
+          <a href="dashboard.html" class="nav-link ativo" aria-current="page">
+            <span class="nav-icone">▦</span>
+            <span>Dashboard</span>
+          </a>
+
+          <a href="leads.html" class="nav-link">
+            <span class="nav-icone">☷</span>
+            <span>Leads</span>
+          </a>
+        </nav>
+
+        <!-- RODAPÉ DA SIDEBAR -->
+        <div class="sidebar-rodape">
+          <div class="usuario-sidebar">
+            <div class="avatar" id="avatarUsuario">A</div>
+
+            <div class="usuario-informacoes">
+              <strong id="nomeUsuarioSidebar">Carregando...</strong>
+              <span id="tipoUsuarioSidebar">Usuário</span>
+            </div>
+          </div>
+
+          <button type="button" id="botaoSair" class="nav-link botao-sair">
+            <span class="nav-icone">↪</span>
+            <span>Sair</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- CONTEÚDO PRINCIPAL -->
+      <main class="conteudo-principal">
+        <!-- CABEÇALHO -->
+        <header class="cabecalho-pagina">
+          <div class="cabecalho-titulo">
+            <button
+              type="button"
+              class="botao-menu"
+              id="botaoMenu"
+              aria-label="Abrir menu"
+              aria-controls="barraLateral"
+              aria-expanded="false"
+            >
+              ☰
+            </button>
+
+            <div>
+              <h1>Dashboard</h1>
+
+              <p class="texto-superior">
+                Acompanhe o desempenho e gerencie seus leads.
+              </p>
+            </div>
+          </div>
+
+          <div class="cabecalho-usuario">
+            <div class="usuario-avatar" id="avatarUsuarioCabecalho">A</div>
+
+            <div class="usuario-texto">
+              <strong id="nomeUsuarioCabecalho"> Carregando... </strong>
+
+              <span id="descricaoUsuarioCabecalho"> Usuário </span>
+            </div>
+          </div>
+        </header>
+
+        <!-- INDICADORES -->
+        <section class="leads-indicadores">
+          <article class="indicador-card">
+            <h3>Total de leads</h3>
+            <strong id="totalLeads">0</strong>
+            <p>Total de registros cadastrados</p>
+          </article>
+
+          <article class="indicador-card">
+            <h3>Novos leads</h3>
+            <strong id="novosLeads">0</strong>
+            <p>Leads aguardando contato</p>
+          </article>
+
+          <article class="indicador-card">
+            <h3>Alta prioridade</h3>
+            <strong id="leadsAltaPrioridade">0</strong>
+            <p>Leads com maior prioridade</p>
+          </article>
+
+          <article class="indicador-card">
+            <h3>Em acompanhamento</h3>
+            <strong id="leadsEmAcompanhamento">0</strong>
+            <p>Leads em processo de atendimento</p>
+          </article>
+        </section>
+
+        <!-- TABELA DE LEADS -->
+        <section class="card-leads">
+          <div class="leads-cabecalho">
+            <div>
+              <h2>Leads recentes</h2>
+              <p>Consulte e acompanhe os leads cadastrados.</p>
+            </div>
+
+            <a href="leads_form.html" class="botao-primario"> + Novo lead </a>
+          </div>
+
+          <!-- PESQUISA E FILTROS -->
+          <div class="filtros-leads">
+            <input
+              type="search"
+              id="pesquisaLeads"
+              placeholder="Pesquisar por empresa, contato..."
+              aria-label="Pesquisar leads"
+            />
+
+            <select id="filtroStatus" aria-label="Filtrar por status">
+              <option value="">Todos os status</option>
+              <option value="novo">Novo</option>
+              <option value="contato">Em contato</option>
+              <option value="qualificacao">Em qualificação</option>
+              <option value="convertido">Convertido</option>
+              <option value="perdido">Perdido</option>
+            </select>
+
+            <select id="filtroPrioridade" aria-label="Filtrar por prioridade">
+              <option value="">Todas as prioridades</option>
+              <option value="alta">Alta</option>
+              <option value="media">Média</option>
+              <option value="baixa">Baixa</option>
+            </select>
+          </div>
+
+          <!-- MENSAGEM DE CARREGAMENTO -->
+          <p id="carregandoLeads" role="status" hidden>Carregando leads...</p>
+
+          <!-- MENSAGEM DE ERRO -->
+          <p id="erroCarregamento" role="alert" hidden>
+            Não foi possível carregar os leads. Tente novamente.
+          </p>
+
+          <!-- TABELA -->
+          <div class="tabela-container">
+            <table class="tabela-leads">
+              <thead>
+                <tr>
+                  <th>Empresa</th>
+                  <th>Contato</th>
+                  <th>Segmento</th>
+                  <th>Prioridade</th>
+                  <th>Status</th>
+                  <th>Responsável</th>
+                  <th>Origem</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+
+              <tbody id="corpoTabelaLeads"></tbody>
+            </table>
+          </div>
+
+          <!-- MENSAGEM SEM RESULTADOS -->
+          <p id="semResultados" hidden>
+            Nenhum lead encontrado com os filtros selecionados.
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <!-- JAVASCRIPT -->
+
+    <!-- SERVIÇOS -->
+    <script src="../js/services/api.js" defer></script>
+    <script src="../js/services/auth.js" defer></script>
+    <script src="../js/services/leads2.js" defer></script>
+
+    <!-- COMPONENTES -->
+    <script src="../js/components/sidebar.js" defer></script>
+
+    <!-- LÓGICA DA PÁGINA -->
+    <script src="../js/pages/dashboard.js" defer></script>
+  </body>
+</html>
