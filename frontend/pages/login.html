@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>LeadFlow | Login</title>
+
+    <!-- Estilos gerais -->
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+
+<!-- Estilos específicos -->
+<link rel="stylesheet" href="../css/pages/login.css">
+
+  <body class="pagina-login">
+    <main class="login-container">
+      <!-- PAINEL DE APRESENTAÇÃO -->
+      <section class="login-apresentacao">
+        <div class="login-marca">
+          <h1>LeadFlow</h1>
+          <span>Automind</span>
+        </div>
+
+        <div class="login-apresentacao-conteudo">
+          <h2>Gerencie seus leads de forma mais inteligente.</h2>
+
+          <p>
+            Centralize seus contatos, acompanhe oportunidades e utilize
+            inteligência artificial para priorizar seus leads.
+          </p>
+        </div>
+
+        <div class="login-apresentacao-rodape">
+          <span> Plataforma de gerenciamento de leads </span>
+        </div>
+      </section>
+
+      <!-- PAINEL DE AUTENTICAÇÃO -->
+      <section class="login-formulario-container">
+        <div class="login-formulario-conteudo">
+          <div class="login-titulo">
+            <h2>Bem-vindo de volta!</h2>
+
+            <p>Entre com suas credenciais para acessar o LeadFlow.</p>
+          </div>
+
+          <!-- FORMULÁRIO DE LOGIN -->
+          <form id="formularioLogin" novalidate>
+            <!-- E-MAIL -->
+            <div class="campo-formulario">
+              <label for="emailLogin"> E-mail </label>
+
+              <input
+                type="email"
+                id="emailLogin"
+                name="email"
+                placeholder="seuemail@empresa.com"
+                autocomplete="username"
+                maxlength="254"
+                required
+              />
+            </div>
+
+            <!-- SENHA -->
+            <div class="campo-formulario">
+              <label for="senhaLogin"> Senha </label>
+
+              <div class="campo-senha">
+                <input
+                  type="password"
+                  id="senhaLogin"
+                  name="senha"
+                  placeholder="Digite sua senha"
+                  autocomplete="current-password"
+                  required
+                />
+
+                <button
+                  type="button"
+                  id="botaoMostrarSenha"
+                  class="botao-mostrar-senha"
+                  aria-label="Mostrar senha"
+                  aria-pressed="false"
+                >
+                  Mostrar
+                </button>
+              </div>
+            </div>
+
+            <!-- MENSAGENS -->
+            <div
+              id="mensagemErro"
+              class="mensagem-erro"
+              role="alert"
+              aria-live="polite"
+              hidden
+            ></div>
+
+            <div
+              id="mensagemSucesso"
+              class="mensagem-sucesso"
+              role="status"
+              aria-live="polite"
+              hidden
+            ></div>
+
+            <!-- BOTÃO DE ENTRADA -->
+            <button
+              type="submit"
+              id="botaoEntrar"
+              class="botao-primario botao-login"
+            >
+              Entrar
+            </button>
+          </form>
+
+          <!-- INFORMAÇÕES ADICIONAIS -->
+          <div class="login-rodape">
+            <p>
+              Em caso de problemas de acesso, entre em contato com o
+              administrador do sistema.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- JAVASCRIPT -->
+
+    <script src="../js/utils/validators.js" defer></script>
+
+    <script src="../js/services/api.js" defer></script>
+
+    <script src="../js/services/auth.js" defer></script>
+
+    <script src="../js/pages/login.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,262 @@
+/* ============================================
+   LEADFLOW - FORMULÁRIO DE LEAD
+============================================ */
+
+/* ============================================
+   ESTRUTURA PRINCIPAL
+============================================ */
+
+.pagina-formulario-lead {
+  width: 100%;
+  min-width: 0;
+}
+
+/* ============================================
+   INTRODUÇÃO
+============================================ */
+
+.formulario-introducao {
+  margin-bottom: 24px;
+}
+
+.link-voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 20px;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.link-voltar:hover {
+  color: #2563eb;
+}
+
+.formulario-introducao h2 {
+  margin: 0 0 8px;
+  color: #0f172a;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.formulario-introducao p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ============================================
+   CARTÃO DO FORMULÁRIO
+============================================ */
+
+.card-formulario {
+  width: 100%;
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+/* ============================================
+   GRUPOS DO FORMULÁRIO
+============================================ */
+
+.grupo-formulario {
+  padding-bottom: 28px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.grupo-formulario:last-of-type {
+  padding-bottom: 0;
+  margin-bottom: 24px;
+  border-bottom: none;
+}
+
+.grupo-formulario-cabecalho {
+  margin-bottom: 22px;
+}
+
+.grupo-formulario-cabecalho h3 {
+  margin: 0 0 7px;
+  color: #0f172a;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.grupo-formulario-cabecalho p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* ============================================
+   GRADE DOS CAMPOS
+============================================ */
+
+.grade-formulario {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 20px;
+}
+
+/* ============================================
+   CAMPOS
+============================================ */
+
+.campo-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.campo-formulario label {
+  color: #334155;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.campo-formulario input,
+.campo-formulario select,
+.campo-formulario textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 11px 13px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #0f172a;
+  font-family: inherit;
+  font-size: 13px;
+  outline: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.campo-formulario input,
+.campo-formulario select {
+  min-height: 43px;
+}
+
+.campo-formulario textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.campo-formulario input::placeholder,
+.campo-formulario textarea::placeholder {
+  color: #94a3b8;
+}
+
+.campo-formulario input:focus,
+.campo-formulario select:focus,
+.campo-formulario textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.campo-formulario input:disabled,
+.campo-formulario select:disabled,
+.campo-formulario textarea:disabled {
+  background-color: #f8fafc;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   MENSAGENS DE ERRO
+============================================ */
+
+#errosFormulario {
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  background-color: #fef2f2;
+  color: #b91c1c;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+#errosFormulario:empty {
+  display: none;
+}
+
+/* ============================================
+   AÇÕES DO FORMULÁRIO
+============================================ */
+
+.acoes-formulario {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 22px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.acoes-formulario .botao-primario,
+.acoes-formulario .botao-secundario {
+  min-width: 125px;
+  min-height: 42px;
+}
+
+/* ============================================
+   RESPONSIVIDADE
+============================================ */
+
+@media (max-width: 900px) {
+  .card-formulario {
+    padding: 22px;
+  }
+
+  .grade-formulario {
+    gap: 18px 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-formulario {
+    padding: 20px;
+  }
+
+  .grupo-formulario {
+    padding-bottom: 22px;
+    margin-bottom: 22px;
+  }
+}
+
+@media (max-width: 600px) {
+  .grade-formulario {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .card-formulario {
+    padding: 17px;
+  }
+
+  .formulario-introducao h2 {
+    font-size: 18px;
+  }
+
+  .acoes-formulario {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .acoes-formulario button {
+    width: 100%;
+  }
+}

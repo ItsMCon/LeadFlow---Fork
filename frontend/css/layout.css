@@ -1,0 +1,673 @@
+/* ============================================
+   LEADFLOW - ESTRUTURA GERAL DAS PÁGINAS
+============================================ */
+
+/* ============================================
+   1. CONFIGURAÇÃO GERAL
+============================================ */
+
+body {
+  min-height: 100vh;
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* ============================================
+   2. BARRA LATERAL (SIDEBAR)
+============================================ */
+
+.barra-lateral,
+#barraLateral {
+  display: flex;
+  flex-direction: column;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  width: 250px;
+  min-width: 250px;
+  height: 100vh;
+
+  padding: 24px 16px;
+
+  background-color: var(--cor-secundaria, #0f172a);
+  color: #ffffff;
+
+  z-index: 1000;
+
+  overflow-y: auto;
+
+  /* Começa fechada em qualquer resolução */
+  transform: translateX(-100%);
+  visibility: hidden;
+
+  transition:
+    transform 0.25s ease,
+    visibility 0.25s ease;
+}
+
+/* SIDEBAR ABERTA */
+
+.barra-lateral.aberta,
+#barraLateral.aberta {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+/* LOGOTIPO */
+
+.sidebar-logo,
+.logo-container,
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 0 10px;
+  margin-bottom: 36px;
+}
+
+.sidebar-logo h1,
+.logo-container h1,
+.logo h1 {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.sidebar-logo span,
+.logo-container span,
+.logo span {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+/* NAVEGAÇÃO */
+
+.sidebar-navegacao,
+.sidebar-menu,
+.navegacao {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  width: 100%;
+}
+
+.nav-titulo {
+  margin: 20px 10px 8px;
+
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.sidebar-navegacao a,
+.sidebar-menu a,
+.navegacao a,
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: 100%;
+  padding: 12px;
+
+  border-radius: 8px;
+
+  color: #cbd5e1;
+  font-size: 14px;
+  text-decoration: none;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.sidebar-navegacao a:hover,
+.sidebar-menu a:hover,
+.navegacao a:hover,
+.nav-link:hover {
+  background-color: #1e293b;
+  color: #ffffff;
+}
+
+.sidebar-navegacao a.ativo,
+.sidebar-menu a.ativo,
+.navegacao a.ativo,
+.nav-link.ativo {
+  background-color: var(--cor-primaria, #2563eb);
+  color: #ffffff;
+}
+
+/* ÍCONES DA NAVEGAÇÃO */
+
+.nav-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  min-width: 20px;
+}
+
+/* RODAPÉ DA SIDEBAR */
+
+.sidebar-rodape {
+  margin-top: auto;
+
+  padding: 16px 10px 0;
+
+  border-top: 1px solid #334155;
+
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.usuario-sidebar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.usuario-informacoes {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* ============================================
+   3. ÁREA PRINCIPAL
+============================================ */
+
+.conteudo-principal,
+.main-content {
+  width: 100%;
+  min-width: 0;
+  min-height: 100vh;
+
+  margin-left: 0;
+  padding: 28px 32px;
+
+  transition: margin-left 0.25s ease;
+}
+
+.conteudo-container {
+  width: 100%;
+  max-width: 1600px;
+
+  margin: 0 auto;
+}
+
+/* ============================================
+   4. CABEÇALHO DAS PÁGINAS
+============================================ */
+
+.cabecalho,
+.page-header,
+.cabecalho-pagina {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  width: 100%;
+  margin-bottom: 28px;
+}
+
+.cabecalho-titulo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cabecalho-titulo h1,
+.page-header h1 {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.cabecalho-titulo p,
+.page-header p {
+  margin-top: 5px;
+
+  color: var(--cor-texto-secundario, #64748b);
+  font-size: 14px;
+}
+
+/* AÇÕES DO CABEÇALHO */
+
+.cabecalho-acoes,
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ============================================
+   5. BOTÃO DO MENU
+============================================ */
+
+.botao-menu {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  border: 1px solid var(--cor-borda, #e2e8f0);
+  border-radius: 8px;
+
+  background-color: var(--cor-fundo, #ffffff);
+  color: var(--cor-texto, #1e293b);
+
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* ============================================
+   6. MENU DO USUÁRIO
+============================================ */
+
+.menu-usuario-container {
+  position: relative;
+}
+
+.botao-usuario {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 8px 12px;
+
+  border: 1px solid var(--cor-borda, #e2e8f0);
+  border-radius: 8px;
+
+  background-color: var(--cor-fundo, #ffffff);
+  color: var(--cor-texto, #1e293b);
+}
+
+.menu-usuario {
+  display: none;
+
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+
+  min-width: 180px;
+  padding: 8px;
+
+  background-color: var(--cor-fundo, #ffffff);
+
+  border: 1px solid var(--cor-borda, #e2e8f0);
+  border-radius: 8px;
+
+  box-shadow: var(--sombra-media);
+
+  z-index: 1100;
+}
+
+.menu-usuario.aberto {
+  display: block;
+}
+
+.menu-usuario a,
+.menu-usuario button {
+  display: block;
+
+  width: 100%;
+  padding: 10px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: transparent;
+
+  color: var(--cor-texto, #1e293b);
+  text-align: left;
+  font-size: 13px;
+}
+
+.menu-usuario a:hover,
+.menu-usuario button:hover {
+  background-color: var(--cor-fundo-secundaria, #f1f5f9);
+}
+
+/* ============================================
+   7. ORGANIZAÇÃO DOS CONTEÚDOS
+============================================ */
+
+.secao {
+  width: 100%;
+  margin-bottom: 28px;
+}
+
+.secao-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  margin-bottom: 18px;
+}
+
+.secao-titulo {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* GRID DE CONTEÚDO */
+
+.grid-conteudo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.grid-indicadores {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+
+  margin-bottom: 28px;
+}
+
+/* LAYOUT DE DUAS COLUNAS */
+
+.layout-duas-colunas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* ============================================
+   8. FORMULÁRIOS
+============================================ */
+
+.formulario-container {
+  width: 100%;
+  max-width: 850px;
+
+  margin: 0 auto;
+}
+
+.formulario-cabecalho {
+  margin-bottom: 24px;
+}
+
+.formulario-acoes {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+
+  margin-top: 24px;
+}
+
+.formulario-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 20px;
+}
+
+.campo-largura-total {
+  grid-column: 1 / -1;
+}
+
+/* ============================================
+   9. PÁGINA DE LOGIN
+============================================ */
+
+.pagina-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.login-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  width: 100%;
+  max-width: 1050px;
+  min-height: 600px;
+
+  overflow: hidden;
+
+  background-color: var(--cor-fundo, #ffffff);
+
+  border-radius: 16px;
+
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.1);
+}
+
+/* PAINEL DE APRESENTAÇÃO */
+
+.login-apresentacao {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 48px;
+
+  background-color: var(--cor-secundaria, #0f172a);
+  color: #ffffff;
+}
+
+.login-apresentacao h1,
+.login-apresentacao h2 {
+  color: #ffffff;
+}
+
+.login-apresentacao-conteudo {
+  max-width: 400px;
+}
+
+.login-apresentacao-conteudo h2 {
+  margin-bottom: 18px;
+  font-size: 32px;
+  line-height: 1.3;
+}
+
+.login-apresentacao-conteudo p {
+  color: #cbd5e1;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.login-apresentacao-rodape {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+/* PAINEL DO FORMULÁRIO */
+
+.login-formulario-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 48px;
+}
+
+.login-formulario-conteudo {
+  width: 100%;
+  max-width: 380px;
+}
+
+.login-titulo {
+  margin-bottom: 32px;
+}
+
+.login-titulo h2 {
+  margin-bottom: 10px;
+  font-size: 26px;
+}
+
+.login-titulo p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.login-rodape {
+  margin-top: 28px;
+
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* ============================================
+   10. PÁGINA DE DETALHES DO LEAD
+============================================ */
+
+.detalhes-container {
+  width: 100%;
+}
+
+.detalhes-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  margin-bottom: 24px;
+}
+
+.detalhes-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+.detalhes-coluna {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.detalhes-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ============================================
+   11. RESPONSIVIDADE - TABLETS
+============================================ */
+
+@media (max-width: 1100px) {
+  .grid-indicadores {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .detalhes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .conteudo-principal,
+  .main-content {
+    padding: 24px;
+  }
+}
+
+/* ============================================
+   12. RESPONSIVIDADE - CELULARES
+============================================ */
+
+@media (max-width: 768px) {
+  .conteudo-principal,
+  .main-content {
+    padding: 20px;
+  }
+
+  .cabecalho,
+  .page-header,
+  .cabecalho-pagina {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .grid-conteudo,
+  .layout-duas-colunas {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-indicadores {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .login-container {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+
+  .login-apresentacao {
+    min-height: 220px;
+    padding: 28px;
+  }
+
+  .login-apresentacao-conteudo h2 {
+    font-size: 24px;
+  }
+
+  .login-apresentacao-rodape {
+    display: none;
+  }
+
+  .login-formulario-container {
+    padding: 32px 28px;
+  }
+}
+
+/* ============================================
+   13. RESPONSIVIDADE - CELULARES PEQUENOS
+============================================ */
+
+@media (max-width: 480px) {
+  .conteudo-principal,
+  .main-content {
+    padding: 16px;
+  }
+
+  .grid-indicadores {
+    grid-template-columns: 1fr;
+  }
+
+  .formulario-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .campo-largura-total {
+    grid-column: auto;
+  }
+
+  .formulario-acoes {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .login-container {
+    border-radius: 10px;
+  }
+
+  .login-apresentacao {
+    min-height: 180px;
+    padding: 22px;
+  }
+
+  .login-formulario-container {
+    padding: 28px 20px;
+  }
+}
