@@ -1,15 +1,16 @@
 /* ============================================
    LEADFLOW - COMPONENTES GERAIS
-============================================ */
+   Identidade visual provisória Focus
+   ============================================ */
 
 /* ============================================
    1. BOTÕES
-============================================ */
+   ============================================ */
 
 button {
   font-family: inherit;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: var(--transicao-padrao);
 }
 
 button:disabled {
@@ -29,50 +30,51 @@ button:disabled {
   padding: 10px 18px;
 
   border: none;
-  border-radius: 8px;
+  border-radius: var(--raio-medio);
 
   font-size: 14px;
-  font-weight: 600;
+  font-weight: var(--peso-semi);
 
-  transition: 0.2s ease;
+  transition: var(--transicao-padrao);
 }
 
 .botao-primario {
-  background-color: var(--cor-primaria, #2563eb);
-  color: #ffffff;
+  background-color: var(--cor-primaria);
+  color: var(--cor-texto-invertido);
 }
 
 .botao-primario:hover {
-  background-color: var(--cor-primaria-hover, #1d4ed8);
+  background-color: var(--cor-primaria-hover);
 }
 
 .botao-secundario {
-  background-color: var(--cor-fundo-secundaria, #f1f5f9);
-  color: var(--cor-texto, #334155);
-  border: 1px solid var(--cor-borda, #e2e8f0);
+  background-color: var(--cor-fundo-terciario);
+  color: var(--cor-texto);
+  border: 1px solid var(--cor-borda);
 }
 
 .botao-secundario:hover {
-  background-color: var(--cor-borda, #e2e8f0);
+  background-color: var(--cor-primaria-clara);
+  border-color: var(--cor-borda-forte);
 }
 
 .botao-perigo {
-  background-color: #dc2626;
-  color: #ffffff;
+  background-color: var(--cor-erro);
+  color: var(--cor-texto-invertido);
 }
 
 .botao-perigo:hover {
-  background-color: #b91c1c;
+  background-color: #a82f39;
 }
 
 .botao-texto {
   background: transparent;
-  color: var(--cor-primaria, #2563eb);
+  color: var(--cor-primaria);
   padding: 6px 10px;
 }
 
 .botao-texto:hover {
-  background-color: var(--cor-fundo-secundaria, #f1f5f9);
+  background-color: var(--cor-primaria-clara);
 }
 
 .botao-login {
@@ -82,7 +84,7 @@ button:disabled {
 
 /* ============================================
    2. CAMPOS DE FORMULÁRIO
-============================================ */
+   ============================================ */
 
 .campo-formulario {
   display: flex;
@@ -93,9 +95,9 @@ button:disabled {
 }
 
 .campo-formulario label {
-  color: var(--cor-texto, #334155);
+  color: var(--cor-texto);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: var(--peso-semi);
 }
 
 .campo-formulario input,
@@ -105,24 +107,27 @@ button:disabled {
 
   padding: 11px 13px;
 
-  border: 1px solid var(--cor-borda, #cbd5e1);
-  border-radius: 8px;
+  border: 1px solid var(--cor-borda-forte);
+  border-radius: var(--raio-medio);
 
-  background-color: var(--cor-fundo, #ffffff);
-  color: var(--cor-texto, #1e293b);
+  background-color: var(--cor-fundo-secundario);
+  color: var(--cor-texto);
 
   font-family: inherit;
   font-size: 14px;
 
   outline: none;
-  transition: 0.2s ease;
+
+  transition:
+    border-color var(--transicao-padrao),
+    box-shadow var(--transicao-padrao);
 }
 
 .campo-formulario input:focus,
 .campo-formulario select:focus,
 .campo-formulario textarea:focus {
-  border-color: var(--cor-primaria, #2563eb);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  border-color: var(--cor-secundaria);
+  box-shadow: 0 0 0 3px rgba(25, 118, 165, 0.12);
 }
 
 .campo-formulario textarea {
@@ -132,19 +137,20 @@ button:disabled {
 
 .campo-formulario input::placeholder,
 .campo-formulario textarea::placeholder {
-  color: #94a3b8;
+  color: var(--cor-texto-claro);
 }
 
 .campo-formulario input:disabled,
 .campo-formulario select:disabled,
 .campo-formulario textarea:disabled {
-  background-color: #f1f5f9;
+  background-color: var(--cor-fundo-terciario);
+  color: var(--cor-texto-claro);
   cursor: not-allowed;
 }
 
 /* ============================================
    3. CAMPO DE SENHA
-============================================ */
+   ============================================ */
 
 .campo-senha {
   display: flex;
@@ -163,14 +169,18 @@ button:disabled {
   border: none;
   background: transparent;
 
-  color: var(--cor-primaria, #2563eb);
+  color: var(--cor-primaria);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: var(--peso-semi);
+}
+
+.botao-mostrar-senha:hover {
+  color: var(--cor-secundaria);
 }
 
 /* ============================================
    4. MENSAGENS
-============================================ */
+   ============================================ */
 
 .mensagem-erro,
 .mensagem-sucesso,
@@ -179,49 +189,49 @@ button:disabled {
   padding: 12px 14px;
   margin-bottom: 16px;
 
-  border-radius: 8px;
+  border-radius: var(--raio-medio);
 
   font-size: 13px;
   line-height: 1.5;
 }
 
 .mensagem-erro {
-  color: #991b1b;
-  background-color: #fee2e2;
-  border: 1px solid #fecaca;
+  color: var(--cor-erro);
+  background-color: var(--cor-erro-clara);
+  border: 1px solid #f2c5ca;
 }
 
 .mensagem-sucesso {
-  color: #166534;
-  background-color: #dcfce7;
-  border: 1px solid #bbf7d0;
+  color: var(--cor-sucesso);
+  background-color: var(--cor-sucesso-clara);
+  border: 1px solid #b8e5d0;
 }
 
 .mensagem-aviso {
-  color: #92400e;
-  background-color: #fef3c7;
-  border: 1px solid #fde68a;
+  color: var(--cor-aviso);
+  background-color: var(--cor-aviso-clara);
+  border: 1px solid #f0ddaf;
 }
 
 .mensagem-informativa {
-  color: #1e40af;
-  background-color: #dbeafe;
-  border: 1px solid #bfdbfe;
+  color: var(--cor-info);
+  background-color: var(--cor-info-clara);
+  border: 1px solid #b9ddeb;
 }
 
 /* ============================================
    5. CARDS
-============================================ */
+   ============================================ */
 
 .card {
-  background-color: var(--cor-fundo, #ffffff);
+  background-color: var(--cor-fundo-secundario);
 
-  border: 1px solid var(--cor-borda, #e2e8f0);
-  border-radius: 12px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-grande);
 
   padding: 20px;
 
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--sombra-pequena);
 }
 
 .card-cabecalho {
@@ -235,33 +245,44 @@ button:disabled {
 
 .card-titulo {
   font-size: 16px;
-  font-weight: 600;
-  color: var(--cor-texto, #1e293b);
+  font-weight: var(--peso-semi);
+  color: var(--cor-primaria);
 }
 
 .card-descricao {
-  color: var(--cor-texto-secundario, #64748b);
+  color: var(--cor-texto-secundario);
   font-size: 13px;
   line-height: 1.5;
 }
 
 /* ============================================
    6. CARDS DE INDICADORES
-============================================ */
+   ============================================ */
 
 .card-indicador {
-  background-color: var(--cor-fundo, #ffffff);
+  background-color: var(--cor-fundo-secundario);
 
   padding: 20px;
 
-  border: 1px solid var(--cor-borda, #e2e8f0);
-  border-radius: 12px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-grande);
+
+  box-shadow: var(--sombra-pequena);
+
+  transition:
+    transform var(--transicao-padrao),
+    box-shadow var(--transicao-padrao);
+}
+
+.card-indicador:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-media);
 }
 
 .indicador-titulo {
-  color: var(--cor-texto-secundario, #64748b);
+  color: var(--cor-texto-secundario);
   font-size: 13px;
-  font-weight: 500;
+  font-weight: var(--peso-medio);
 }
 
 .indicador-valor {
@@ -269,9 +290,9 @@ button:disabled {
 
   margin-top: 8px;
 
-  color: var(--cor-texto, #1e293b);
+  color: var(--cor-primaria);
   font-size: 28px;
-  font-weight: 700;
+  font-weight: var(--peso-negrito);
 }
 
 .indicador-descricao {
@@ -279,13 +300,13 @@ button:disabled {
 
   margin-top: 6px;
 
-  color: var(--cor-texto-secundario, #64748b);
+  color: var(--cor-texto-secundario);
   font-size: 12px;
 }
 
 /* ============================================
-   7. BADGES DE STATUS E PRIORIDADE
-============================================ */
+   7. BADGES DE STATUS
+   ============================================ */
 
 .badge {
   display: inline-flex;
@@ -297,62 +318,66 @@ button:disabled {
   border-radius: 20px;
 
   font-size: 12px;
-  font-weight: 600;
+  font-weight: var(--peso-semi);
   white-space: nowrap;
 }
 
 .badge-novo {
-  background-color: #dbeafe;
-  color: #1d4ed8;
+  background-color: var(--cor-info-clara);
+  color: var(--cor-info);
 }
 
 .badge-contato {
-  background-color: #fef3c7;
-  color: #92400e;
+  background-color: var(--cor-aviso-clara);
+  color: var(--cor-aviso);
 }
 
 .badge-qualificacao {
-  background-color: #ede9fe;
-  color: #6d28d9;
+  background-color: #eeeaf9;
+  color: #6546a5;
 }
 
 .badge-convertido {
-  background-color: #dcfce7;
-  color: #166534;
+  background-color: var(--cor-sucesso-clara);
+  color: var(--cor-sucesso);
 }
 
 .badge-perdido {
-  background-color: #fee2e2;
-  color: #991b1b;
+  background-color: var(--cor-erro-clara);
+  color: var(--cor-erro);
 }
 
+/* Classes antigas mantidas por compatibilidade.
+   A prioridade atual deve ser apresentada por
+   ordenação, e não por categorias fixas. */
+
 .badge-alta {
-  background-color: #fee2e2;
-  color: #b91c1c;
+  background-color: var(--cor-erro-clara);
+  color: var(--cor-erro);
 }
 
 .badge-media {
-  background-color: #fef3c7;
-  color: #92400e;
+  background-color: var(--cor-aviso-clara);
+  color: var(--cor-aviso);
 }
 
 .badge-baixa {
-  background-color: #dcfce7;
-  color: #166534;
+  background-color: var(--cor-sucesso-clara);
+  color: var(--cor-sucesso);
 }
 
 /* ============================================
    8. TABELAS
-============================================ */
+   ============================================ */
 
 .tabela-container {
   width: 100%;
   overflow-x: auto;
 
-  background-color: var(--cor-fundo, #ffffff);
+  background-color: var(--cor-fundo-secundario);
 
-  border: 1px solid var(--cor-borda, #e2e8f0);
-  border-radius: 10px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-grande);
 }
 
 .tabela {
@@ -366,40 +391,45 @@ button:disabled {
 .tabela th {
   padding: 14px 16px;
 
-  background-color: var(--cor-fundo-secundaria, #f8fafc);
+  background-color: var(--cor-fundo-terciario);
 
-  color: var(--cor-texto-secundario, #64748b);
+  color: var(--cor-texto-secundario);
 
   font-size: 12px;
-  font-weight: 600;
+  font-weight: var(--peso-semi);
 
   text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 .tabela td {
   padding: 14px 16px;
 
-  color: var(--cor-texto, #334155);
+  color: var(--cor-texto);
 
   font-size: 13px;
 
-  border-top: 1px solid var(--cor-borda, #e2e8f0);
+  border-top: 1px solid var(--cor-borda);
+}
+
+.tabela tbody tr {
+  transition: background-color var(--transicao-padrao);
 }
 
 .tabela tbody tr:hover {
-  background-color: var(--cor-fundo-secundaria, #f8fafc);
+  background-color: var(--cor-primaria-clara);
 }
 
 .tabela-vazia {
   padding: 30px;
   text-align: center;
 
-  color: var(--cor-texto-secundario, #64748b);
+  color: var(--cor-texto-secundario);
 }
 
 /* ============================================
    9. FILTROS E PESQUISA
-============================================ */
+   ============================================ */
 
 .filtros-container {
   display: flex;
@@ -416,15 +446,23 @@ button:disabled {
 
   padding: 11px 14px;
 
-  border: 1px solid var(--cor-borda, #cbd5e1);
-  border-radius: 8px;
+  border: 1px solid var(--cor-borda-forte);
+  border-radius: var(--raio-medio);
+
+  background-color: var(--cor-fundo-secundario);
+  color: var(--cor-texto);
 
   font-size: 14px;
   outline: none;
+
+  transition:
+    border-color var(--transicao-padrao),
+    box-shadow var(--transicao-padrao);
 }
 
 .campo-pesquisa:focus {
-  border-color: var(--cor-primaria, #2563eb);
+  border-color: var(--cor-secundaria);
+  box-shadow: 0 0 0 3px rgba(25, 118, 165, 0.12);
 }
 
 .campo-filtro {
@@ -432,18 +470,25 @@ button:disabled {
 
   padding: 11px 12px;
 
-  border: 1px solid var(--cor-borda, #cbd5e1);
-  border-radius: 8px;
+  border: 1px solid var(--cor-borda-forte);
+  border-radius: var(--raio-medio);
 
-  background-color: var(--cor-fundo, #ffffff);
+  background-color: var(--cor-fundo-secundario);
+  color: var(--cor-texto);
 
   font-size: 14px;
   outline: none;
+
+  transition: border-color var(--transicao-padrao);
+}
+
+.campo-filtro:focus {
+  border-color: var(--cor-secundaria);
 }
 
 /* ============================================
    10. MODAIS
-============================================ */
+   ============================================ */
 
 .modal {
   display: none;
@@ -457,7 +502,7 @@ button:disabled {
 
   padding: 20px;
 
-  background-color: rgba(15, 23, 42, 0.55);
+  background-color: rgba(15, 43, 64, 0.6);
 }
 
 .modal.aberto {
@@ -473,11 +518,12 @@ button:disabled {
 
   padding: 24px;
 
-  background-color: var(--cor-fundo, #ffffff);
+  background-color: var(--cor-fundo-secundario);
 
-  border-radius: 12px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-grande);
 
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--sombra-grande);
 }
 
 .modal-cabecalho {
@@ -489,16 +535,21 @@ button:disabled {
 }
 
 .modal-titulo {
+  color: var(--cor-primaria);
   font-size: 18px;
-  font-weight: 700;
+  font-weight: var(--peso-negrito);
 }
 
 .botao-fechar-modal {
   border: none;
   background: transparent;
 
-  color: var(--cor-texto-secundario, #64748b);
+  color: var(--cor-texto-secundario);
   font-size: 22px;
+}
+
+.botao-fechar-modal:hover {
+  color: var(--cor-primaria);
 }
 
 body.modal-aberto {
@@ -507,12 +558,12 @@ body.modal-aberto {
 
 /* ============================================
    11. ESTADOS DE CARREGAMENTO
-============================================ */
+   ============================================ */
 
 .carregando {
   padding: 25px;
 
-  color: var(--cor-texto-secundario, #64748b);
+  color: var(--cor-texto-secundario);
   font-size: 14px;
   text-align: center;
 }
@@ -523,7 +574,7 @@ body.modal-aberto {
 
 /* ============================================
    12. AVATAR
-============================================ */
+   ============================================ */
 
 .avatar {
   display: flex;
@@ -535,13 +586,13 @@ body.modal-aberto {
 
   flex-shrink: 0;
 
-  border-radius: 50%;
+  border-radius: var(--raio-circular);
 
-  background-color: #dbeafe;
-  color: #1d4ed8;
+  background-color: var(--cor-primaria-clara);
+  color: var(--cor-primaria);
 
   font-size: 14px;
-  font-weight: 700;
+  font-weight: var(--peso-negrito);
 }
 
 .avatar-pequeno {
@@ -557,8 +608,45 @@ body.modal-aberto {
 }
 
 /* ============================================
-   13. RESPONSIVIDADE
-============================================ */
+   13. IDENTIDADE VISUAL FOCUS - SIDEBAR
+   ============================================ */
+
+.barra-lateral .logo {
+  width: 100%;
+  padding: 20px 16px;
+}
+
+.barra-lateral .logo-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: 100%;
+
+  text-decoration: none;
+}
+
+.barra-lateral .logo-imagem-focus {
+  display: block;
+
+  width: 120px;
+  height: 48px;
+
+  object-fit: contain;
+}
+
+.barra-lateral .logo-texto {
+  color: var(--cor-texto-invertido);
+  font-size: 17px;
+  font-weight: var(--peso-negrito);
+  text-align: center;
+}
+
+/* ============================================
+   14. RESPONSIVIDADE
+   ============================================ */
 
 @media (max-width: 768px) {
   .card {
@@ -595,5 +683,9 @@ body.modal-aberto {
 
   .card-indicador {
     padding: 15px;
+  }
+
+  .barra-lateral .logo-imagem-focus {
+    width: 105px;
   }
 }

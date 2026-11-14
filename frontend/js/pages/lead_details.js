@@ -102,6 +102,189 @@ function preencherDetalhesLead(lead) {
 }
 
 // ============================================
+// HISTÓRICO DE CONTATOS
+// ============================================
+
+function renderizarHistoricoContatos(lead) {
+  const container = document.getElementById("historicoContatos");
+  const contador = document.getElementById("totalTentativasContato");
+
+  if (!container) {
+    return;
+  }
+
+  const historico = Array.isArray(lead.historicoContatos)
+    ? lead.historicoContatos
+    : [];
+
+  // Atualiza o contador de tentativas.
+  if (contador) {
+    contador.textContent =
+      historico.length === 1 ? "1 tentativa" : `${historico.length} tentativas`;
+  }
+
+  // Limpa o conteúdo anterior.
+  container.innerHTML = "";
+
+  // Exibe uma mensagem caso não existam tentativas.
+  if (historico.length === 0) {
+    const mensagem = document.createElement("p");
+
+    mensagem.id = "semHistoricoContatos";
+    mensagem.textContent = "Nenhuma tentativa de contato registrada.";
+
+    container.appendChild(mensagem);
+
+    return;
+  }
+
+  // Mostra as tentativas mais recentes primeiro.
+  const historicoOrdenado = [...historico].sort((a, b) => {
+    return new Date(b.data) - new Date(a.data);
+  });
+
+  historicoOrdenado.forEach((tentativa) => {
+    const item = document.createElement("article");
+    item.className = "item-historico-contato";
+
+    const cabecalho = document.createElement("div");
+    cabecalho.className = "cabecalho-tentativa";
+
+    const numero = document.createElement("strong");
+    numero.className = "numero-tentativa";
+    numero.textContent = `${tentativa.numero}ª tentativa`;
+
+    const data = document.createElement("span");
+    data.className = "data-tentativa";
+    data.textContent = formatarDataLead(tentativa.data);
+
+    cabecalho.append(numero, data);
+
+    const detalhes = document.createElement("div");
+    detalhes.className = "detalhes-tentativa";
+
+    const canal = document.createElement("p");
+    canal.textContent = `Canal: ${tentativa.canal || "-"}`;
+
+    const resultado = document.createElement("p");
+    resultado.textContent = `Resultado: ${tentativa.resultado || "-"}`;
+
+    const responsavel = document.createElement("p");
+    responsavel.textContent = `Responsável: ${tentativa.responsavel || "-"}`;
+
+    detalhes.append(canal, resultado, responsavel);
+
+    item.append(cabecalho, detalhes);
+
+    // A observação só aparece quando foi preenchida.
+    if (tentativa.observacao) {
+      const observacao = document.createElement("p");
+
+      observacao.className = "observacao-tentativa";
+      observacao.textContent = `Observação: ${tentativa.observacao}`;
+
+      item.appendChild(observacao);
+    }
+
+    container.appendChild(item);
+  });
+}
+
+// ============================================
+// REGISTRAR NOVA TENTATIVA DE CONTATO
+// ============================================
+
+function configurarRegistroContato(lead) {
+  const formulario = document.getElementById("formularioTentativaContato");
+
+  const seletorCanal = document.getElementById("canalContato");
+  const seletorResultado = document.getElementById("resultadoContato");
+  const campoObservacao = document.getElementById("observacaoContato");
+  const mensagem = document.getElementById("mensagemContato");
+
+  if (!formulario || !seletorCanal || !seletorResultado || !campoObservacao) {
+    return;
+  }
+
+  formulario.addEventListener("submit", async (evento) => {
+    evento.preventDefault();
+
+    const dadosContato = {
+      canal: seletorCanal.value,
+      resultado: seletorResultado.value,
+      observacao: campoObservacao.value,
+      responsavel: lead.responsavel,
+    };
+
+    if (!dadosContato.canal || !dadosContato.resultado) {
+      if (mensagem) {
+        mensagem.textContent = "Selecione o canal e o resultado do contato.";
+      }
+
+      return;
+    }
+
+    const botaoEnviar = formulario.querySelector('button[type="submit"]');
+
+    if (mensagem) {
+      mensagem.textContent = "";
+    }
+
+    if (botaoEnviar) {
+      botaoEnviar.disabled = true;
+      botaoEnviar.textContent = "Registrando...";
+    }
+
+    try {
+      // Registra a tentativa no serviço de leads.
+      const tentativa = await registrarTentativaContato(lead.id, dadosContato);
+
+      // Atualiza o histórico que está em memória.
+      if (!Array.isArray(lead.historicoContatos)) {
+        lead.historicoContatos = [];
+      }
+
+      lead.historicoContatos.push(tentativa);
+
+      // Atualiza a data da última modificação.
+      lead.dataAtualizacao = new Date().toISOString();
+
+      preencherCampo(
+        "dataAtualizacaoLead",
+        formatarDataLead(lead.dataAtualizacao),
+      );
+
+      preencherCampo(
+        "dataAtualizacaoResumo",
+        formatarDataLead(lead.dataAtualizacao),
+      );
+
+      // Atualiza o histórico exibido na página.
+      renderizarHistoricoContatos(lead);
+
+      // Limpa os campos após o registro.
+      formulario.reset();
+
+      if (mensagem) {
+        mensagem.textContent = "Tentativa de contato registrada com sucesso.";
+      }
+    } catch (erro) {
+      console.error("Erro ao registrar contato:", erro);
+
+      if (mensagem) {
+        mensagem.textContent =
+          "Não foi possível registrar a tentativa. Tente novamente.";
+      }
+    } finally {
+      if (botaoEnviar) {
+        botaoEnviar.disabled = false;
+        botaoEnviar.textContent = "Registrar tentativa";
+      }
+    }
+  });
+}
+
+// ============================================
 // TRATAMENTO DE LEAD NÃO ENCONTRADO
 // ============================================
 
@@ -166,14 +349,11 @@ function configurarAlteracaoStatus(lead) {
     }
 
     try {
-      // Atualiza o mesmo armazenamento utilizado
-      // pela listagem e pelo formulário.
       const leadAtualizado = await atualizarStatusLead(
         lead.id,
         statusFormatado,
       );
 
-      // Atualiza os dados exibidos na página.
       Object.assign(lead, leadAtualizado);
 
       preencherCampo("statusLead", lead.status);
@@ -238,7 +418,6 @@ async function iniciarDetalhesLead() {
   }
 
   try {
-    // Consulta o serviço compartilhado.
     const lead = await buscarLeadPorId(idLead);
 
     if (!lead) {
@@ -248,7 +427,12 @@ async function iniciarDetalhesLead() {
 
     preencherDetalhesLead(lead);
 
+    // Exibe o histórico já registrado.
+    renderizarHistoricoContatos(lead);
+
     configurarAlteracaoStatus(lead);
+
+    configurarRegistroContato(lead);
 
     configurarEdicaoLead();
   } catch (erro) {

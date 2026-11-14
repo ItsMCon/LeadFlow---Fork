@@ -7,50 +7,61 @@
     <title>LeadFlow | Login</title>
 
     <!-- Estilos gerais -->
-<link rel="stylesheet" href="../css/global.css">
-<link rel="stylesheet" href="../css/layout.css">
-<link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
 
-<!-- Estilos específicos -->
-<link rel="stylesheet" href="../css/pages/login.css">
+    <!-- Estilos específicos -->
+    <link rel="stylesheet" href="../css/pages/login.css" />
+  </head>
 
   <body class="pagina-login">
     <main class="login-container">
-      <!-- PAINEL DE APRESENTAÇÃO -->
-      <section class="login-apresentacao">
-        <div class="login-marca">
-          <h1>LeadFlow</h1>
-          <span>Automind</span>
+      <!-- PAINEL DE IDENTIDADE VISUAL -->
+      <section class="login-identidade">
+        <div class="login-identidade-conteudo">
+          <div class="login-marca">
+            <img
+              src="../assets/images/logo-focus.png"
+              alt="FOCUS"
+              class="login-logo-focus"
+            />
+
+            <span class="login-marca-divisor"></span>
+
+            <span class="login-marca-produto">LeadFlow - FOCUS</span>
+          </div>
+
+          <div class="login-identidade-texto">
+            <h1>Gestão inteligente de leads.</h1>
+
+            <p>
+              Centralize contatos, acompanhe oportunidades e transforme
+              informações em melhores decisões.
+            </p>
+          </div>
         </div>
 
-        <div class="login-apresentacao-conteudo">
-          <h2>Gerencie seus leads de forma mais inteligente.</h2>
-
-          <p>
-            Centralize seus contatos, acompanhe oportunidades e utilize
-            inteligência artificial para priorizar seus leads.
-          </p>
-        </div>
-
-        <div class="login-apresentacao-rodape">
-          <span> Plataforma de gerenciamento de leads </span>
+        <div class="login-identidade-rodape">
+          <span>LeadFlow | Plataforma de gerenciamento de leads</span>
         </div>
       </section>
 
       <!-- PAINEL DE AUTENTICAÇÃO -->
-      <section class="login-formulario-container">
+      <section class="login-formulario-container" aria-labelledby="tituloLogin">
         <div class="login-formulario-conteudo">
+          <!-- Título -->
           <div class="login-titulo">
-            <h2>Bem-vindo de volta!</h2>
+            <h2 id="tituloLogin">Bem-vindo!</h2>
 
-            <p>Entre com suas credenciais para acessar o LeadFlow.</p>
+            <p>Acesse sua conta para continuar.</p>
           </div>
 
           <!-- FORMULÁRIO DE LOGIN -->
           <form id="formularioLogin" novalidate>
             <!-- E-MAIL -->
             <div class="campo-formulario">
-              <label for="emailLogin"> E-mail </label>
+              <label for="emailLogin">E-mail</label>
 
               <input
                 type="email"
@@ -65,7 +76,7 @@
 
             <!-- SENHA -->
             <div class="campo-formulario">
-              <label for="senhaLogin"> Senha </label>
+              <label for="senhaLogin">Senha</label>
 
               <div class="campo-senha">
                 <input
@@ -89,7 +100,7 @@
               </div>
             </div>
 
-            <!-- MENSAGENS -->
+            <!-- MENSAGEM DE ERRO -->
             <div
               id="mensagemErro"
               class="mensagem-erro"
@@ -98,6 +109,7 @@
               hidden
             ></div>
 
+            <!-- MENSAGEM DE SUCESSO -->
             <div
               id="mensagemSucesso"
               class="mensagem-sucesso"
@@ -116,7 +128,7 @@
             </button>
           </form>
 
-          <!-- INFORMAÇÕES ADICIONAIS -->
+          <!-- RODAPÉ -->
           <div class="login-rodape">
             <p>
               Em caso de problemas de acesso, entre em contato com o
@@ -128,13 +140,9 @@
     </main>
 
     <!-- JAVASCRIPT -->
-
     <script src="../js/utils/validators.js" defer></script>
-
     <script src="../js/services/api.js" defer></script>
-
     <script src="../js/services/auth.js" defer></script>
-
     <script src="../js/pages/login.js" defer></script>
   </body>
 </html>

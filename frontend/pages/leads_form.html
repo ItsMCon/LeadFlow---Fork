@@ -22,8 +22,13 @@
       <!-- SIDEBAR -->
       <aside class="barra-lateral" id="barraLateral">
         <div class="logo">
-          <a href="dashboard.html">
-            <span class="logo-texto">LeadFlow</span>
+          <a href="dashboard.html" class="logo-link">
+            <img
+              src="../assets/images/logo-focus.png"
+              alt="FOCUS"
+              class="logo-imagem-focus"
+            />
+            <span class="logo-texto">LeadFlow - FOCUS</span>
           </a>
         </div>
 
@@ -33,11 +38,6 @@
           <a href="dashboard.html" class="nav-link">
             <span class="nav-icone">▦</span>
             <span>Dashboard</span>
-          </a>
-
-          <a href="leads.html" class="nav-link ativo">
-            <span class="nav-icone">☷</span>
-            <span>Leads</span>
           </a>
         </nav>
 
@@ -96,7 +96,9 @@
         <!-- FORMULÁRIO -->
         <section class="pagina-formulario-lead">
           <div class="formulario-introducao">
-            <a href="leads.html" class="link-voltar"> ← Voltar para leads </a>
+            <a href="dashboard.html" class="link-voltar">
+              ← Voltar para Dashboard
+            </a>
 
             <h2>Informações do lead</h2>
 
@@ -112,14 +114,12 @@
               <section class="grupo-formulario">
                 <div class="grupo-formulario-cabecalho">
                   <h3>Informações de contato</h3>
-
                   <p>Dados básicos para identificação e contato.</p>
                 </div>
 
                 <div class="grade-formulario">
                   <div class="campo-formulario">
-                    <label for="nomeLead"> Nome do contato * </label>
-
+                    <label for="nomeLead">Nome do contato *</label>
                     <input
                       type="text"
                       id="nomeLead"
@@ -132,8 +132,7 @@
                   </div>
 
                   <div class="campo-formulario">
-                    <label for="empresaLead"> Nome da empresa * </label>
-
+                    <label for="empresaLead">Nome da empresa *</label>
                     <input
                       type="text"
                       id="empresaLead"
@@ -145,8 +144,7 @@
                   </div>
 
                   <div class="campo-formulario">
-                    <label for="emailLead"> E-mail * </label>
-
+                    <label for="emailLead">E-mail *</label>
                     <input
                       type="email"
                       id="emailLead"
@@ -159,8 +157,7 @@
                   </div>
 
                   <div class="campo-formulario">
-                    <label for="telefoneLead"> Telefone * </label>
-
+                    <label for="telefoneLead">Telefone *</label>
                     <input
                       type="tel"
                       id="telefoneLead"
@@ -178,7 +175,6 @@
               <section class="grupo-formulario">
                 <div class="grupo-formulario-cabecalho">
                   <h3>Informações comerciais</h3>
-
                   <p>
                     Informações relacionadas à origem e ao gerenciamento do
                     lead.
@@ -187,35 +183,24 @@
 
                 <div class="grade-formulario">
                   <div class="campo-formulario">
-                    <label for="segmentoLead"> Segmento da empresa * </label>
-
+                    <label for="segmentoLead">Segmento da empresa *</label>
                     <select id="segmentoLead" name="segmento" required>
                       <option value="">Selecione um segmento</option>
-
                       <option value="Tecnologia">Tecnologia</option>
-
                       <option value="Saúde">Saúde</option>
-
                       <option value="Educação">Educação</option>
-
                       <option value="Comércio">Comércio</option>
-
                       <option value="Indústria">Indústria</option>
-
                       <option value="Serviços">Serviços</option>
-
                       <option value="Outro">Outro</option>
                     </select>
                   </div>
 
                   <div class="campo-formulario">
-                    <label for="origemLead"> Origem do lead * </label>
-
+                    <label for="origemLead">Origem do lead *</label>
                     <select id="origemLead" name="origem" required>
                       <option value="">Selecione a origem</option>
-
                       <option value="SITE">Site</option>
-
                       <option value="SDR">SDR</option>
                     </select>
                   </div>
@@ -224,14 +209,10 @@
                     <label for="responsavelLead">
                       Responsável pelo atendimento
                     </label>
-
                     <select id="responsavelLead" name="responsavel">
                       <option value="">Selecione um responsável</option>
-
                       <option value="Administrador">Administrador</option>
-
                       <option value="Vendedor 1">Vendedor 1</option>
-
                       <option value="Vendedor 2">Vendedor 2</option>
                     </select>
                   </div>
@@ -242,7 +223,6 @@
               <section class="grupo-formulario">
                 <div class="grupo-formulario-cabecalho">
                   <h3>Necessidade do cliente</h3>
-
                   <p>
                     Descreva a necessidade comercial apresentada pelo cliente.
                     Essas informações poderão ser utilizadas pela IA para
@@ -254,7 +234,6 @@
                   <label for="descricaoLead">
                     Descrição da necessidade *
                   </label>
-
                   <textarea
                     id="descricaoLead"
                     name="descricao"
@@ -270,7 +249,6 @@
               <section class="grupo-formulario">
                 <div class="grupo-formulario-cabecalho">
                   <h3>Observações adicionais</h3>
-
                   <p>
                     Registre informações relevantes sobre o contato ou a
                     empresa.
@@ -278,8 +256,7 @@
                 </div>
 
                 <div class="campo-formulario">
-                  <label for="observacoesLead"> Observações </label>
-
+                  <label for="observacoesLead">Observações</label>
                   <textarea
                     id="observacoesLead"
                     name="observacoes"
@@ -310,7 +287,7 @@
               <!-- AÇÕES -->
               <div class="acoes-formulario">
                 <a
-                  href="leads.html"
+                  href="dashboard.html"
                   id="botaoCancelarLead"
                   class="botao-secundario"
                 >

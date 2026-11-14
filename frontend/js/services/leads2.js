@@ -38,6 +38,7 @@ const leadsIniciais = [
     observacoes: "Demonstrou interesse nos serviços.",
     dataCadastro: "2026-11-01T10:00:00.000Z",
     dataAtualizacao: "2026-11-01T10:00:00.000Z",
+    historicoContatos: [],
   },
   {
     id: "lead-002",
@@ -56,6 +57,7 @@ const leadsIniciais = [
     observacoes: "Aguardando retorno da empresa.",
     dataCadastro: "2026-11-02T10:00:00.000Z",
     dataAtualizacao: "2026-11-02T10:00:00.000Z",
+    historicoContatos: [],
   },
   {
     id: "lead-003",
@@ -74,6 +76,7 @@ const leadsIniciais = [
     observacoes: "Contrato concluído.",
     dataCadastro: "2026-11-03T10:00:00.000Z",
     dataAtualizacao: "2026-11-03T10:00:00.000Z",
+    historicoContatos: [],
   },
 ];
 
@@ -95,6 +98,22 @@ function obterLeadsArmazenados() {
 
   if (!Array.isArray(leads)) {
     throw new Error("Os dados armazenados dos leads são inválidos.");
+  }
+
+  // Garante que leads antigos tenham um histórico de contatos.
+  // Nenhum outro dado do lead é removido ou substituído.
+
+  let houveAtualizacao = false;
+
+  leads.forEach((lead) => {
+    if (!Array.isArray(lead.historicoContatos)) {
+      lead.historicoContatos = [];
+      houveAtualizacao = true;
+    }
+  });
+
+  if (houveAtualizacao) {
+    salvarLeadsArmazenados(leads);
   }
 
   return leads;
@@ -186,6 +205,7 @@ async function cadastrarLead(dados) {
         status: "Novo",
         dataCadastro: dataAtual,
         dataAtualizacao: dataAtual,
+        historicoContatos: [],
       };
 
       leads.push(novoLead);
@@ -229,6 +249,9 @@ async function editarLead(id, dados) {
 
         // Preserva a data de cadastro.
         dataCadastro: leads[indice].dataCadastro,
+
+        // Preserva o histórico de contatos.
+        historicoContatos: leads[indice].historicoContatos,
 
         // Atualiza a data da última modificação.
         dataAtualizacao: obterDataAtual(),
@@ -325,6 +348,69 @@ async function atualizarResponsavelLead(id, novoResponsavel) {
     return resposta;
   } catch (erro) {
     console.error("Erro ao atualizar responsável:", erro);
+
+    throw erro;
+  }
+}
+
+// ============================================
+// REGISTRAR TENTATIVA DE CONTATO
+// ============================================
+
+async function registrarTentativaContato(id, dados) {
+  try {
+    // Valida os campos obrigatórios.
+
+    if (!dados?.canal || !dados?.resultado) {
+      throw new Error("Informe o canal e o resultado da tentativa de contato.");
+    }
+
+    if (USAR_ARMAZENAMENTO_LOCAL) {
+      const leads = obterLeadsArmazenados();
+
+      const indice = leads.findIndex((lead) => lead.id === id);
+
+      if (indice === -1) {
+        throw new Error("Lead não encontrado.");
+      }
+
+      const lead = leads[indice];
+
+      if (!Array.isArray(lead.historicoContatos)) {
+        lead.historicoContatos = [];
+      }
+
+      const dataAtual = obterDataAtual();
+
+      const tentativa = {
+        id: gerarIdLead(),
+        numero: lead.historicoContatos.length + 1,
+        data: dataAtual,
+        canal: dados.canal,
+        resultado: dados.resultado,
+        observacao: dados.observacao?.trim() || "",
+        responsavel:
+          dados.responsavel?.trim() || lead.responsavel || "Não informado",
+      };
+
+      lead.historicoContatos.push(tentativa);
+
+      lead.dataAtualizacao = dataAtual;
+
+      salvarLeadsArmazenados(leads);
+
+      return tentativa;
+    }
+
+    // Endpoint previsto para a futura integração com o backend.
+    const resposta = await enviarAPI(
+      `/leads/${encodeURIComponent(id)}/contatos`,
+      dados,
+    );
+
+    return resposta;
+  } catch (erro) {
+    console.error("Erro ao registrar tentativa de contato:", erro);
 
     throw erro;
   }

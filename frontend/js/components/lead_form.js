@@ -1,48 +1,42 @@
 // ============================================
-// LEADFLOW - FORMULÁRIO DE LEADS
+// LEADFLOW - FORMULÁRIO DE CADASTRO E EDIÇÃO
 // ============================================
 
 // ============================================
-// CAPTURA DOS DADOS
+// OBTER DADOS DO FORMULÁRIO
 // ============================================
 
-function obterDadosFormulario(formulario) {
-  const obterValor = (seletor) => {
-    const campo = formulario.querySelector(seletor);
-
-    return campo ? campo.value.trim() : "";
-  };
-
+function obterDadosFormulario() {
   return {
-    nome: obterValor("#nomeLead"),
-    empresa: obterValor("#empresaLead"),
-    email: obterValor("#emailLead"),
-    telefone: obterValor("#telefoneLead"),
-    segmento: obterValor("#segmentoLead"),
-    origem: obterValor("#origemLead"),
-    responsavel: obterValor("#responsavelLead"),
-    observacoes: obterValor("#observacoesLead"),
-    descricao: obterValor("#descricaoLead"),
+    nome: document.getElementById("nomeLead").value.trim(),
+    empresa: document.getElementById("empresaLead").value.trim(),
+    email: document.getElementById("emailLead").value.trim(),
+    telefone: document.getElementById("telefoneLead").value.trim(),
+    segmento: document.getElementById("segmentoLead").value,
+    origem: document.getElementById("origemLead").value,
+    responsavel: document.getElementById("responsavelLead").value,
+    descricao: document.getElementById("descricaoLead").value.trim(),
+    observacoes: document.getElementById("observacoesLead").value.trim(),
   };
 }
 
 // ============================================
-// VALIDAÇÃO DOS CAMPOS
+// VALIDAR FORMULÁRIO
 // ============================================
 
 function validarFormularioLead(dados) {
   const erros = [];
 
   if (!dados.nome) {
-    erros.push("O nome do contato é obrigatório.");
+    erros.push("Informe o nome do contato.");
   }
 
   if (!dados.empresa) {
-    erros.push("O nome da empresa é obrigatório.");
+    erros.push("Informe o nome da empresa.");
   }
 
   if (!dados.email) {
-    erros.push("O e-mail é obrigatório.");
+    erros.push("Informe o e-mail.");
   } else {
     const formatoEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -52,11 +46,11 @@ function validarFormularioLead(dados) {
   }
 
   if (!dados.telefone) {
-    erros.push("O telefone é obrigatório.");
+    erros.push("Informe o telefone.");
   } else {
-    const telefoneNumeros = dados.telefone.replace(/\D/g, "");
+    const telefoneNumerico = dados.telefone.replace(/\D/g, "");
 
-    if (telefoneNumeros.length < 10 || telefoneNumeros.length > 13) {
+    if (telefoneNumerico.length < 10 || telefoneNumerico.length > 13) {
       erros.push("Informe um telefone válido.");
     }
   }
@@ -70,21 +64,20 @@ function validarFormularioLead(dados) {
   }
 
   if (!dados.descricao) {
-    erros.push("A descrição da necessidade é obrigatória.");
+    erros.push("Informe a necessidade do cliente.");
   }
 
   return erros;
 }
 
 // ============================================
-// EXIBIÇÃO DAS MENSAGENS
+// EXIBIR ERROS
 // ============================================
 
 function exibirErrosFormulario(erros) {
   const elementoErros = document.getElementById("errosFormulario");
 
   if (!elementoErros) {
-    console.error(erros.join("\n"));
     return;
   }
 
@@ -95,22 +88,26 @@ function exibirErrosFormulario(erros) {
     return;
   }
 
+  const lista = document.createElement("ul");
+
   erros.forEach((erro) => {
-    const item = document.createElement("p");
-
+    const item = document.createElement("li");
     item.textContent = erro;
-
-    elementoErros.appendChild(item);
+    lista.appendChild(item);
   });
 
+  elementoErros.appendChild(lista);
   elementoErros.hidden = false;
 }
+
+// ============================================
+// EXIBIR MENSAGEM DE SUCESSO
+// ============================================
 
 function exibirMensagemSucesso(mensagem) {
   const elementoMensagem = document.getElementById("mensagemFormulario");
 
   if (!elementoMensagem) {
-    console.log(mensagem);
     return;
   }
 
@@ -118,43 +115,39 @@ function exibirMensagemSucesso(mensagem) {
   elementoMensagem.hidden = false;
 }
 
+// ============================================
+// LIMPAR MENSAGEM DE SUCESSO
+// ============================================
+
 function limparMensagemSucesso() {
   const elementoMensagem = document.getElementById("mensagemFormulario");
 
-  if (elementoMensagem) {
-    elementoMensagem.textContent = "";
-    elementoMensagem.hidden = true;
+  if (!elementoMensagem) {
+    return;
   }
+
+  elementoMensagem.textContent = "";
+  elementoMensagem.hidden = true;
 }
 
 // ============================================
-// CARREGAR DADOS NO FORMULÁRIO
+// PREENCHER FORMULÁRIO NA EDIÇÃO
 // ============================================
 
 function preencherFormularioLead(formulario, lead) {
-  const campos = {
-    "#nomeLead": lead.nome ?? lead.nome_completo,
-    "#empresaLead": lead.empresa,
-    "#emailLead": lead.email,
-    "#telefoneLead": lead.telefone ?? lead.whatsapp,
-    "#segmentoLead": lead.segmento,
-    "#origemLead": lead.origem,
-    "#responsavelLead": lead.responsavel,
-    "#observacoesLead": lead.observacoes,
-    "#descricaoLead": lead.descricao,
-  };
-
-  Object.entries(campos).forEach(([seletor, valor]) => {
-    const campo = formulario.querySelector(seletor);
-
-    if (campo && valor !== undefined && valor !== null) {
-      campo.value = valor;
-    }
-  });
+  formulario.querySelector("#nomeLead").value = lead.nome || "";
+  formulario.querySelector("#empresaLead").value = lead.empresa || "";
+  formulario.querySelector("#emailLead").value = lead.email || "";
+  formulario.querySelector("#telefoneLead").value = lead.telefone || "";
+  formulario.querySelector("#segmentoLead").value = lead.segmento || "";
+  formulario.querySelector("#origemLead").value = lead.origem || "";
+  formulario.querySelector("#responsavelLead").value = lead.responsavel || "";
+  formulario.querySelector("#descricaoLead").value = lead.descricao || "";
+  formulario.querySelector("#observacoesLead").value = lead.observacoes || "";
 }
 
 // ============================================
-// IDENTIFICAR MODO DE EDIÇÃO
+// OBTER ID DO LEAD PELA URL
 // ============================================
 
 function obterIdLeadDaURL() {
@@ -167,41 +160,41 @@ function obterIdLeadDaURL() {
 // CONFIGURAR MODO DE EDIÇÃO
 // ============================================
 
-async function configurarEdicaoLead(formulario, idLead) {
+function configurarEdicaoLead(formulario, idLead) {
   const titulo = document.getElementById("tituloFormulario");
   const botaoSalvar = document.getElementById("botaoSalvarLead");
 
-  try {
-    const lead = await buscarLeadPorId(idLead);
+  const lead = buscarLeadPorId(idLead);
 
-    if (!lead || typeof lead !== "object") {
-      throw new Error("Lead não encontrado.");
-    }
+  if (!lead) {
+    exibirErrosFormulario(["Não foi possível encontrar o lead solicitado."]);
 
-    preencherFormularioLead(formulario, lead);
-
-    formulario.dataset.id = idLead;
-
-    if (titulo) {
-      titulo.textContent = "Editar lead";
-    }
-
-    if (botaoSalvar) {
-      botaoSalvar.textContent = "Salvar alterações";
-    }
-  } catch (erro) {
-    console.error("Erro ao carregar lead para edição:", erro);
-
-    exibirErrosFormulario([
-      erro.message || "Não foi possível carregar os dados do lead.",
-    ]);
-
-    formulario.dataset.erroCarregamento = "true";
-
-    if (botaoSalvar) {
-      botaoSalvar.disabled = true;
-    }
+    formulario.hidden = true;
+    return false;
   }
+
+  preencherFormularioLead(formulario, lead);
+
+  formulario.dataset.id = lead.id;
+
+  if (titulo) {
+    titulo.textContent = "Editar lead";
+  }
+
+  if (botaoSalvar) {
+    botaoSalvar.textContent = "Salvar alterações";
+  }
+
+  document.title = "LeadFlow | Editar Lead";
+
+  const introducao = document.querySelector(".formulario-introducao p");
+
+  if (introducao) {
+    introducao.textContent =
+      "Atualize as informações do lead cadastrado no sistema.";
+  }
+
+  return true;
 }
 
 // ============================================
@@ -212,77 +205,71 @@ function configurarEnvioFormulario(formulario) {
   formulario.addEventListener("submit", async (evento) => {
     evento.preventDefault();
 
-    if (formulario.dataset.erroCarregamento === "true") {
-      return;
-    }
+    exibirErrosFormulario([]);
+    limparMensagemSucesso();
 
-    if (formulario.dataset.enviando === "true") {
+    const dados = obterDadosFormulario();
+    const erros = validarFormularioLead(dados);
+
+    if (erros.length > 0) {
+      exibirErrosFormulario(erros);
       return;
     }
 
     const botaoSalvar = document.getElementById("botaoSalvarLead");
 
-    const textoOriginal = botaoSalvar ? botaoSalvar.textContent : "Salvar lead";
+    const idLead = formulario.dataset.id;
 
-    const dados = obterDadosFormulario(formulario);
-
-    const erros = validarFormularioLead(dados);
-
-    exibirErrosFormulario(erros);
-    limparMensagemSucesso();
-
-    if (erros.length > 0) {
-      return;
+    if (botaoSalvar) {
+      botaoSalvar.disabled = true;
+      botaoSalvar.textContent = "Salvando...";
     }
 
     try {
-      formulario.dataset.enviando = "true";
-
-      if (botaoSalvar) {
-        botaoSalvar.disabled = true;
-        botaoSalvar.textContent = "Salvando...";
-      }
-
-      const idLead = formulario.dataset.id;
+      let resultado;
 
       if (idLead) {
-        await editarLead(idLead, dados);
+        resultado = await editarLead(idLead, dados);
+
+        if (resultado === false || resultado === null) {
+          throw new Error("Não foi possível atualizar o lead.");
+        }
 
         exibirMensagemSucesso("Lead atualizado com sucesso!");
       } else {
-        await cadastrarLead(dados);
+        resultado = await cadastrarLead(dados);
+
+        if (resultado === false || resultado === null) {
+          throw new Error("Não foi possível cadastrar o lead.");
+        }
 
         exibirMensagemSucesso("Lead cadastrado com sucesso!");
       }
 
-      // Mantém o formulário bloqueado após o sucesso.
-      // Isso impede novos envios durante o redirecionamento.
-
+      // Retornar ao Dashboard após salvar.
       setTimeout(() => {
-        window.location.href = "leads.html";
+        window.location.href = "dashboard.html";
       }, 1200);
     } catch (erro) {
-      console.error("Erro ao salvar formulário:", erro);
+      console.error("Erro ao salvar lead:", erro);
 
       exibirErrosFormulario([
-        erro.message || "Não foi possível salvar o lead. Tente novamente.",
+        erro.message || "Ocorreu um erro ao salvar o lead.",
       ]);
-
-      delete formulario.dataset.enviando;
 
       if (botaoSalvar) {
         botaoSalvar.disabled = false;
-        botaoSalvar.textContent = textoOriginal;
+        botaoSalvar.textContent = idLead ? "Salvar alterações" : "Salvar lead";
       }
     }
   });
 }
 
 // ============================================
-// INICIALIZAÇÃO
+// INICIALIZAR FORMULÁRIO
 // ============================================
 
-async function iniciarFormularioLead() {
+function iniciarFormularioLead() {
   const formulario = document.getElementById("formularioLead");
 
   if (!formulario) {
@@ -292,14 +279,14 @@ async function iniciarFormularioLead() {
   const idLead = obterIdLeadDaURL();
 
   if (idLead) {
-    await configurarEdicaoLead(formulario, idLead);
+    const edicaoIniciada = configurarEdicaoLead(formulario, idLead);
+
+    if (!edicaoIniciada) {
+      return;
+    }
   }
 
   configurarEnvioFormulario(formulario);
 }
-
-// ============================================
-// INICIAR QUANDO A PÁGINA CARREGAR
-// ============================================
 
 document.addEventListener("DOMContentLoaded", iniciarFormularioLead);

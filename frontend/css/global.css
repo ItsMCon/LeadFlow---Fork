@@ -1,76 +1,102 @@
 /* ============================================
    LEADFLOW - ESTILOS GLOBAIS
-   Identidade visual e configurações gerais
-============================================ */
+   Identidade visual provisória Focus
+   ============================================ */
 
 /* ============================================
    1. VARIÁVEIS GLOBAIS
-============================================ */
+   ============================================ */
 
 :root {
-  /* Cores principais */
-  --cor-primaria: #2563eb;
-  --cor-primaria-hover: #1d4ed8;
-  --cor-primaria-clara: #dbeafe;
+  /* Identidade visual Focus - provisória */
+  --cor-primaria: #123b5d;
+  --cor-primaria-hover: #0b2d49;
+  --cor-primaria-clara: #e8f0f6;
 
-  /* Cores secundárias */
-  --cor-secundaria: #0f172a;
-  --cor-secundaria-hover: #1e293b;
+  --cor-secundaria: #1976a5;
+  --cor-secundaria-hover: #125f86;
+  --cor-secundaria-clara: #e6f3f8;
 
   /* Cores de fundo */
-  --cor-fundo: #ffffff;
-  --cor-fundo-principal: #f8fafc;
-  --cor-fundo-secundaria: #f1f5f9;
+  --cor-fundo: #f4f6f8;
+  --cor-fundo-secundario: #ffffff;
+  --cor-fundo-terciario: #eaf0f4;
 
   /* Cores de texto */
-  --cor-texto: #1e293b;
-  --cor-texto-secundario: #64748b;
-  --cor-texto-claro: #94a3b8;
+  --cor-texto: #172b3a;
+  --cor-texto-secundario: #536777;
+  --cor-texto-claro: #8293a0;
+  --cor-texto-invertido: #ffffff;
 
   /* Bordas */
-  --cor-borda: #e2e8f0;
-  --cor-borda-forte: #cbd5e1;
+  --cor-borda: #dce4ea;
+  --cor-borda-forte: #c5d1da;
 
-  /* Cores de feedback */
-  --cor-sucesso: #16a34a;
-  --cor-erro: #dc2626;
-  --cor-aviso: #d97706;
-  --cor-informacao: #2563eb;
+  /* Estados */
+  --cor-sucesso: #16835d;
+  --cor-sucesso-clara: #e6f5ee;
+
+  --cor-erro: #c43d48;
+  --cor-erro-clara: #fcebed;
+
+  --cor-aviso: #b7791f;
+  --cor-aviso-clara: #fff5df;
+
+  --cor-info: #1976a5;
+  --cor-info-clara: #e6f3f8;
 
   /* Tipografia */
   --fonte-principal: "Inter", "Segoe UI", Arial, sans-serif;
 
-  /* Tamanhos de fonte */
-  --fonte-pequena: 12px;
-  --fonte-normal: 14px;
-  --fonte-media: 16px;
-  --fonte-grande: 20px;
-  --fonte-titulo: 28px;
+  --fonte-pequena: 0.75rem;
+  --fonte-secundaria: 0.875rem;
+  --fonte-normal: 1rem;
+  --fonte-media: 1.125rem;
+  --fonte-grande: 1.25rem;
+  --fonte-titulo: 1.5rem;
+  --fonte-titulo-grande: 1.875rem;
+
+  /* Pesos */
+  --peso-normal: 400;
+  --peso-medio: 500;
+  --peso-semi: 600;
+  --peso-negrito: 700;
 
   /* Espaçamentos */
-  --espacamento-xs: 4px;
-  --espacamento-sm: 8px;
-  --espacamento-md: 16px;
-  --espacamento-lg: 24px;
-  --espacamento-xl: 32px;
-  --espacamento-xxl: 48px;
+  --espaco-1: 4px;
+  --espaco-2: 8px;
+  --espaco-3: 12px;
+  --espaco-4: 16px;
+  --espaco-5: 20px;
+  --espaco-6: 24px;
+  --espaco-8: 32px;
+  --espaco-10: 40px;
+  --espaco-12: 48px;
 
   /* Bordas arredondadas */
   --raio-pequeno: 6px;
-  --raio-medio: 8px;
-  --raio-grande: 12px;
+  --raio-medio: 10px;
+  --raio-grande: 14px;
+  --raio-extra: 20px;
+  --raio-circular: 50%;
 
   /* Sombras */
-  --sombra-leve: 0 2px 6px rgba(0, 0, 0, 0.04);
-  --sombra-media: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --sombra-pequena: 0 1px 3px rgba(18, 59, 93, 0.08);
+  --sombra-media: 0 4px 12px rgba(18, 59, 93, 0.1);
+  --sombra-grande: 0 8px 24px rgba(18, 59, 93, 0.12);
 
   /* Transições */
   --transicao-padrao: 0.2s ease;
+  --transicao-suave: 0.3s ease;
+
+  /* Layout */
+  --largura-sidebar: 260px;
+  --altura-header: 72px;
 }
 
 /* ============================================
-   2. RESET GLOBAL
-============================================ */
+   2. RESET E CONFIGURAÇÕES GERAIS
+   ============================================ */
 
 * {
   margin: 0;
@@ -80,23 +106,45 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
   min-height: 100vh;
-
   font-family: var(--fonte-principal);
   font-size: var(--fonte-normal);
-
-  color: var(--cor-texto);
-  background-color: var(--cor-fundo-principal);
-
+  font-weight: var(--peso-normal);
   line-height: 1.5;
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 /* ============================================
-   3. ELEMENTOS DE TEXTO
-============================================ */
+   3. TIPOGRAFIA
+   ============================================ */
 
 h1,
 h2,
@@ -104,33 +152,29 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--cor-texto);
-  font-weight: 700;
+  color: var(--cor-primaria);
+  font-weight: var(--peso-semi);
   line-height: 1.3;
 }
 
 h1 {
-  font-size: var(--fonte-titulo);
+  font-size: var(--fonte-titulo-grande);
 }
 
 h2 {
-  font-size: 24px;
+  font-size: var(--fonte-titulo);
 }
 
 h3 {
-  font-size: 20px;
+  font-size: var(--fonte-grande);
 }
 
 h4 {
-  font-size: 16px;
+  font-size: var(--fonte-media);
 }
 
 p {
   color: var(--cor-texto-secundario);
-}
-
-strong {
-  font-weight: 700;
 }
 
 small {
@@ -139,79 +183,96 @@ small {
 
 /* ============================================
    4. LINKS
-============================================ */
+   ============================================ */
 
 a {
-  color: var(--cor-primaria);
-  text-decoration: none;
-  transition: var(--transicao-padrao);
+  transition: color var(--transicao-padrao);
 }
 
 a:hover {
-  color: var(--cor-primaria-hover);
-}
-
-a:focus-visible {
-  outline: 2px solid var(--cor-primaria);
-  outline-offset: 3px;
-}
-
-/* ============================================
-   5. IMAGENS E ELEMENTOS DE MÍDIA
-============================================ */
-
-img,
-svg {
-  max-width: 100%;
-}
-
-img {
-  display: block;
-  height: auto;
-}
-
-/* ============================================
-   6. CAMPOS E ELEMENTOS INTERATIVOS
-============================================ */
-
-button,
-input,
-select,
-textarea {
-  font-family: inherit;
-  font-size: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible {
-  outline: 2px solid var(--cor-primaria);
-  outline-offset: 2px;
-}
-
-input,
-select,
-textarea {
-  color: var(--cor-texto);
-}
-
-/* ============================================
-   7. SELEÇÃO DE TEXTO
-============================================ */
-
-::selection {
-  background-color: var(--cor-primaria-clara);
   color: var(--cor-secundaria);
 }
 
 /* ============================================
+   5. CAMPOS DE FORMULÁRIO
+   ============================================ */
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 11px 14px;
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo-secundario);
+  border: 1px solid var(--cor-borda-forte);
+  border-radius: var(--raio-medio);
+  outline: none;
+  transition:
+    border-color var(--transicao-padrao),
+    box-shadow var(--transicao-padrao);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--cor-texto-claro);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--cor-secundaria);
+  box-shadow: 0 0 0 3px rgba(25, 118, 165, 0.12);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+  background-color: var(--cor-fundo-terciario);
+  color: var(--cor-texto-claro);
+  cursor: not-allowed;
+}
+
+/* ============================================
+   6. BOTÕES
+   ============================================ */
+
+button {
+  border: none;
+  transition:
+    background-color var(--transicao-padrao),
+    color var(--transicao-padrao),
+    border-color var(--transicao-padrao),
+    box-shadow var(--transicao-padrao);
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgba(25, 118, 165, 0.35);
+  outline-offset: 2px;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   7. SELEÇÃO DE TEXTO
+   ============================================ */
+
+::selection {
+  color: var(--cor-texto-invertido);
+  background-color: var(--cor-secundaria);
+}
+
+/* ============================================
    8. BARRA DE ROLAGEM
-============================================ */
+   ============================================ */
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -219,12 +280,12 @@ textarea {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: var(--cor-fundo-principal);
+  background-color: var(--cor-fundo-terciario);
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--cor-borda-forte);
-  border-radius: 10px;
+  background-color: #b9c8d2;
+  border-radius: var(--raio-circular);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -232,8 +293,8 @@ textarea {
 }
 
 /* ============================================
-   9. UTILITÁRIOS GLOBAIS
-============================================ */
+   9. CLASSES UTILITÁRIAS
+   ============================================ */
 
 .texto-primario {
   color: var(--cor-primaria);
@@ -241,6 +302,10 @@ textarea {
 
 .texto-secundario {
   color: var(--cor-texto-secundario);
+}
+
+.texto-claro {
+  color: var(--cor-texto-claro);
 }
 
 .texto-sucesso {
@@ -255,6 +320,30 @@ textarea {
   color: var(--cor-aviso);
 }
 
+.fundo-primario {
+  background-color: var(--cor-primaria);
+}
+
+.fundo-secundario {
+  background-color: var(--cor-fundo-secundario);
+}
+
+.fundo-sucesso {
+  background-color: var(--cor-sucesso-clara);
+}
+
+.fundo-erro {
+  background-color: var(--cor-erro-clara);
+}
+
+.fundo-aviso {
+  background-color: var(--cor-aviso-clara);
+}
+
+.oculto {
+  display: none !important;
+}
+
 .texto-centralizado {
   text-align: center;
 }
@@ -263,38 +352,34 @@ textarea {
   width: 100%;
 }
 
-.altura-total {
-  min-height: 100vh;
-}
-
 /* ============================================
    10. RESPONSIVIDADE GLOBAL
-============================================ */
+   ============================================ */
 
 @media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+
   h1 {
-    font-size: 24px;
+    font-size: 1.55rem;
   }
 
   h2 {
-    font-size: 21px;
+    font-size: 1.3rem;
   }
 
-  h3 {
-    font-size: 18px;
-  }
-
-  body {
-    font-size: 13px;
+  :root {
+    --largura-sidebar: 240px;
   }
 }
 
 @media (max-width: 480px) {
-  h1 {
-    font-size: 22px;
+  html {
+    font-size: 14px;
   }
 
-  h2 {
-    font-size: 19px;
+  body {
+    overflow-x: hidden;
   }
 }

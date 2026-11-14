@@ -9,6 +9,7 @@
 const campoPesquisa = document.getElementById("pesquisaLeads");
 const filtroStatus = document.getElementById("filtroStatus");
 const filtroPrioridade = document.getElementById("filtroPrioridade");
+const filtroResponsavel = document.getElementById("filtroResponsavel");
 
 const corpoTabelaLeads = document.getElementById("corpoTabelaLeads");
 
@@ -75,20 +76,6 @@ function formatarStatus(status) {
   return statusConhecidos[statusNormalizado] || status || "Não informado";
 }
 
-function formatarPrioridade(prioridade) {
-  const prioridadeNormalizada = normalizarTexto(prioridade);
-
-  const prioridadesConhecidas = {
-    alta: "Alta",
-    media: "Média",
-    baixa: "Baixa",
-  };
-
-  return (
-    prioridadesConhecidas[prioridadeNormalizada] || prioridade || "Não definida"
-  );
-}
-
 function obterClasseStatus(status) {
   const statusNormalizado = normalizarTexto(status);
 
@@ -103,18 +90,6 @@ function obterClasseStatus(status) {
   };
 
   return classes[statusNormalizado] || "";
-}
-
-function obterClassePrioridade(prioridade) {
-  const prioridadeNormalizada = normalizarTexto(prioridade);
-
-  const classes = {
-    alta: "badge-alta",
-    media: "badge-media",
-    baixa: "badge-baixa",
-  };
-
-  return classes[prioridadeNormalizada] || "";
 }
 
 function formatarOrigem(origem) {
@@ -135,24 +110,21 @@ function formatarOrigem(origem) {
 // ORDENAÇÃO DOS LEADS
 // ============================================
 
-function obterDataLead(lead) {
-  return obterValorLead(
-    lead,
-    "createdAt",
-    "created_at",
-    "dataCriacao",
-    "data_criacao",
-    "criado_em",
-  );
-}
+// Enquanto a IA não estiver implementada,
+// a ordem é apenas demonstrativa.
+//
+// A sequência original dos leads será utilizada
+// como referência para o ranking.
 
-function ordenarLeadsRecentes(leads) {
-  return [...leads].sort((a, b) => {
-    const dataA = new Date(obterDataLead(a)).getTime() || 0;
-    const dataB = new Date(obterDataLead(b)).getTime() || 0;
-
-    return dataB - dataA;
-  });
+function ordenarLeadsPorPrioridade(leads) {
+  return leads
+    .map((lead, indiceOriginal) => ({
+      lead,
+      indiceOriginal,
+    }))
+    .sort((a, b) => {
+      return a.indiceOriginal - b.indiceOriginal;
+    });
 }
 
 // ============================================
@@ -164,13 +136,6 @@ function atualizarIndicadoresDashboard(leads) {
 
   const novos = leads.filter((lead) => {
     return normalizarTexto(obterValorLead(lead, "status")) === "novo";
-  }).length;
-
-  const altaPrioridade = leads.filter((lead) => {
-    return (
-      normalizarTexto(obterValorLead(lead, "prioridade", "prioridade_ia")) ===
-      "alta"
-    );
   }).length;
 
   const emAcompanhamento = leads.filter((lead) => {
@@ -186,7 +151,11 @@ function atualizarIndicadoresDashboard(leads) {
 
   indicadorTotalLeads.textContent = total;
   indicadorNovosLeads.textContent = novos;
-  indicadorAltaPrioridade.textContent = altaPrioridade;
+
+  // Exibe quantos leads existem no ranking,
+  // em vez de contar leads de alta prioridade.
+  indicadorAltaPrioridade.textContent = total;
+
   indicadorEmAcompanhamento.textContent = emAcompanhamento;
 }
 
@@ -195,6 +164,47 @@ function zerarIndicadoresDashboard() {
   indicadorNovosLeads.textContent = "0";
   indicadorAltaPrioridade.textContent = "0";
   indicadorEmAcompanhamento.textContent = "0";
+}
+
+// ============================================
+// PREENCHER FILTRO DE RESPONSÁVEIS
+// ============================================
+
+function preencherFiltroResponsaveis(leads) {
+  if (!filtroResponsavel) return;
+
+  const responsaveis = [
+    ...new Set(
+      leads
+        .map((lead) =>
+          String(obterValorLead(lead, "responsavel", "responsavel_sdr")).trim(),
+        )
+        .filter(Boolean),
+    ),
+  ].sort((a, b) => a.localeCompare(b, "pt-BR"));
+
+  const valorAnterior = filtroResponsavel.value;
+
+  filtroResponsavel.innerHTML = "";
+
+  const opcaoPadrao = document.createElement("option");
+  opcaoPadrao.value = "";
+  opcaoPadrao.textContent = "Todos os responsáveis";
+
+  filtroResponsavel.appendChild(opcaoPadrao);
+
+  responsaveis.forEach((responsavel) => {
+    const opcao = document.createElement("option");
+
+    opcao.value = responsavel;
+    opcao.textContent = responsavel;
+
+    filtroResponsavel.appendChild(opcao);
+  });
+
+  if (responsaveis.includes(valorAnterior)) {
+    filtroResponsavel.value = valorAnterior;
+  }
 }
 
 // ============================================
@@ -213,7 +223,7 @@ function criarCelula(texto) {
 // CRIAR LINHA DE UM LEAD
 // ============================================
 
-function criarLinhaLeadDashboard(lead) {
+function criarLinhaLeadDashboard(lead, posicao) {
   const linha = document.createElement("tr");
 
   const id = obterValorLead(lead, "id");
@@ -224,10 +234,6 @@ function criarLinhaLeadDashboard(lead) {
 
   const segmento = obterValorLead(lead, "segmento", "segmento_empresa");
 
-  const prioridade = formatarPrioridade(
-    obterValorLead(lead, "prioridade", "prioridade_ia"),
-  );
-
   const status = formatarStatus(obterValorLead(lead, "status"));
 
   const responsavel = obterValorLead(lead, "responsavel", "responsavel_sdr");
@@ -237,7 +243,8 @@ function criarLinhaLeadDashboard(lead) {
   // ATRIBUTOS PARA OS FILTROS
 
   linha.dataset.status = normalizarTexto(status);
-  linha.dataset.prioridade = normalizarTexto(prioridade);
+  linha.dataset.responsavel = normalizarTexto(responsavel);
+  linha.dataset.posicao = posicao;
 
   // EMPRESA, CONTATO E SEGMENTO
 
@@ -245,17 +252,20 @@ function criarLinhaLeadDashboard(lead) {
   linha.appendChild(criarCelula(contato));
   linha.appendChild(criarCelula(segmento));
 
-  // PRIORIDADE
+  // POSIÇÃO NO RANKING
 
   const celulaPrioridade = document.createElement("td");
-  const badgePrioridade = document.createElement("span");
+  const badgePosicao = document.createElement("span");
 
-  badgePrioridade.className =
-    `badge ${obterClassePrioridade(prioridade)}`.trim();
+  badgePosicao.className = "badge badge-ranking";
+  badgePosicao.textContent = `${posicao}º`;
 
-  badgePrioridade.textContent = prioridade;
+  badgePosicao.title =
+    posicao === 1
+      ? "Lead mais prioritário"
+      : `${posicao}º lead mais prioritário`;
 
-  celulaPrioridade.appendChild(badgePrioridade);
+  celulaPrioridade.appendChild(badgePosicao);
   linha.appendChild(celulaPrioridade);
 
   // STATUS
@@ -275,7 +285,7 @@ function criarLinhaLeadDashboard(lead) {
   linha.appendChild(criarCelula(responsavel));
   linha.appendChild(criarCelula(origem));
 
-  // BOTÃO DE VISUALIZAÇÃO
+  // BOTÃO DE DETALHES
 
   const celulaAcoes = document.createElement("td");
   const containerAcoes = document.createElement("div");
@@ -284,9 +294,9 @@ function criarLinhaLeadDashboard(lead) {
   containerAcoes.className = "acoes-tabela";
   botaoDetalhes.className = "botao-acao";
 
-  botaoDetalhes.textContent = "Ver";
-  botaoDetalhes.title = "Visualizar lead";
-  botaoDetalhes.setAttribute("aria-label", "Visualizar lead");
+  botaoDetalhes.textContent = "Detalhes";
+  botaoDetalhes.title = "Visualizar detalhes do lead";
+  botaoDetalhes.setAttribute("aria-label", "Visualizar detalhes do lead");
 
   if (id) {
     botaoDetalhes.href = `lead_details.html?id=${encodeURIComponent(id)}`;
@@ -309,10 +319,12 @@ function criarLinhaLeadDashboard(lead) {
 function renderizarTabelaDashboard(leads) {
   corpoTabelaLeads.innerHTML = "";
 
-  const leadsOrdenados = ordenarLeadsRecentes(leads);
+  const leadsOrdenados = ordenarLeadsPorPrioridade(leads);
 
-  leadsOrdenados.forEach((lead) => {
-    const linha = criarLinhaLeadDashboard(lead);
+  leadsOrdenados.forEach((item, indice) => {
+    const posicao = indice + 1;
+
+    const linha = criarLinhaLeadDashboard(item.lead, posicao);
 
     corpoTabelaLeads.appendChild(linha);
   });
@@ -329,7 +341,9 @@ function filtrarLeadsDashboard() {
 
   const statusSelecionado = normalizarTexto(filtroStatus.value);
 
-  const prioridadeSelecionada = normalizarTexto(filtroPrioridade.value);
+  const responsavelSelecionado = normalizarTexto(
+    filtroResponsavel?.value || "",
+  );
 
   const leadsFiltrados = leadsDashboard.filter((lead) => {
     const empresa = normalizarTexto(obterValorLead(lead, "empresa"));
@@ -342,8 +356,8 @@ function filtrarLeadsDashboard() {
       formatarStatus(obterValorLead(lead, "status")),
     );
 
-    const prioridade = normalizarTexto(
-      formatarPrioridade(obterValorLead(lead, "prioridade", "prioridade_ia")),
+    const responsavel = normalizarTexto(
+      obterValorLead(lead, "responsavel", "responsavel_sdr"),
     );
 
     const correspondePesquisa =
@@ -355,10 +369,10 @@ function filtrarLeadsDashboard() {
       (statusSelecionado === "contato" && status === "em contato") ||
       (statusSelecionado === "qualificacao" && status === "em qualificacao");
 
-    const correspondePrioridade =
-      !prioridadeSelecionada || prioridade === prioridadeSelecionada;
+    const correspondeResponsavel =
+      !responsavelSelecionado || responsavel === responsavelSelecionado;
 
-    return correspondePesquisa && correspondeStatus && correspondePrioridade;
+    return correspondePesquisa && correspondeStatus && correspondeResponsavel;
   });
 
   renderizarTabelaDashboard(leadsFiltrados);
@@ -373,7 +387,10 @@ function configurarFiltrosDashboard() {
 
   filtroStatus.addEventListener("change", filtrarLeadsDashboard);
 
-  filtroPrioridade.addEventListener("change", filtrarLeadsDashboard);
+  // O filtro antigo de prioridade não é mais utilizado.
+  // Ele será removido do HTML na próxima etapa.
+
+  filtroResponsavel?.addEventListener("change", filtrarLeadsDashboard);
 }
 
 // ============================================
@@ -397,6 +414,8 @@ async function carregarDashboard() {
     leadsDashboard = resposta;
 
     atualizarIndicadoresDashboard(leadsDashboard);
+
+    preencherFiltroResponsaveis(leadsDashboard);
 
     filtrarLeadsDashboard();
   } catch (erro) {

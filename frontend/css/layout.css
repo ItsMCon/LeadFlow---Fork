@@ -1,10 +1,11 @@
 /* ============================================
    LEADFLOW - ESTRUTURA GERAL DAS PÁGINAS
-============================================ */
+   Identidade visual provisória Focus
+   ============================================ */
 
 /* ============================================
    1. CONFIGURAÇÃO GERAL
-============================================ */
+   ============================================ */
 
 body {
   min-height: 100vh;
@@ -18,7 +19,7 @@ body {
 
 /* ============================================
    2. BARRA LATERAL (SIDEBAR)
-============================================ */
+   ============================================ */
 
 .barra-lateral,
 #barraLateral {
@@ -36,14 +37,12 @@ body {
 
   padding: 24px 16px;
 
-  background-color: var(--cor-secundaria, #0f172a);
-  color: #ffffff;
+  background-color: var(--cor-primaria);
+  color: var(--cor-texto-invertido);
 
   z-index: 1000;
-
   overflow-y: auto;
 
-  /* Começa fechada em qualquer resolução */
   transform: translateX(-100%);
   visibility: hidden;
 
@@ -76,15 +75,15 @@ body {
 .sidebar-logo h1,
 .logo-container h1,
 .logo h1 {
-  color: #ffffff;
+  color: var(--cor-texto-invertido);
   font-size: 22px;
-  font-weight: 700;
+  font-weight: var(--peso-negrito);
 }
 
 .sidebar-logo span,
 .logo-container span,
 .logo span {
-  color: #94a3b8;
+  color: #b8cad8;
   font-size: 11px;
 }
 
@@ -103,10 +102,11 @@ body {
 .nav-titulo {
   margin: 20px 10px 8px;
 
-  color: #94a3b8;
+  color: #b8cad8;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: var(--peso-semi);
   text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .sidebar-navegacao a,
@@ -120,31 +120,32 @@ body {
   width: 100%;
   padding: 12px;
 
-  border-radius: 8px;
+  border-radius: var(--raio-medio);
 
-  color: #cbd5e1;
+  color: #d8e3eb;
   font-size: 14px;
   text-decoration: none;
 
   transition:
-    background-color 0.2s ease,
-    color 0.2s ease;
+    background-color var(--transicao-padrao),
+    color var(--transicao-padrao);
 }
 
 .sidebar-navegacao a:hover,
 .sidebar-menu a:hover,
 .navegacao a:hover,
 .nav-link:hover {
-  background-color: #1e293b;
-  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--cor-texto-invertido);
 }
 
 .sidebar-navegacao a.ativo,
 .sidebar-menu a.ativo,
 .navegacao a.ativo,
 .nav-link.ativo {
-  background-color: var(--cor-primaria, #2563eb);
-  color: #ffffff;
+  background-color: var(--cor-secundaria);
+  color: var(--cor-texto-invertido);
+  font-weight: var(--peso-semi);
 }
 
 /* ÍCONES DA NAVEGAÇÃO */
@@ -165,9 +166,9 @@ body {
 
   padding: 16px 10px 0;
 
-  border-top: 1px solid #334155;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
 
-  color: #94a3b8;
+  color: #b8cad8;
   font-size: 12px;
 }
 
@@ -185,7 +186,7 @@ body {
 
 /* ============================================
    3. ÁREA PRINCIPAL
-============================================ */
+   ============================================ */
 
 .conteudo-principal,
 .main-content {
@@ -208,7 +209,7 @@ body {
 
 /* ============================================
    4. CABEÇALHO DAS PÁGINAS
-============================================ */
+   ============================================ */
 
 .cabecalho,
 .page-header,
@@ -230,15 +231,16 @@ body {
 
 .cabecalho-titulo h1,
 .page-header h1 {
+  color: var(--cor-primaria);
   font-size: 26px;
-  font-weight: 700;
+  font-weight: var(--peso-negrito);
 }
 
 .cabecalho-titulo p,
 .page-header p {
   margin-top: 5px;
 
-  color: var(--cor-texto-secundario, #64748b);
+  color: var(--cor-texto-secundario);
   font-size: 14px;
 }
 
@@ -253,7 +255,7 @@ body {
 
 /* ============================================
    5. BOTÃO DO MENU
-============================================ */
+   ============================================ */
 
 .botao-menu {
   display: inline-flex;
@@ -263,19 +265,28 @@ body {
   width: 40px;
   height: 40px;
 
-  border: 1px solid var(--cor-borda, #e2e8f0);
-  border-radius: 8px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-medio);
 
-  background-color: var(--cor-fundo, #ffffff);
-  color: var(--cor-texto, #1e293b);
+  background-color: var(--cor-fundo-secundario);
+  color: var(--cor-primaria);
 
   font-size: 20px;
   cursor: pointer;
+
+  transition:
+    background-color var(--transicao-padrao),
+    border-color var(--transicao-padrao);
+}
+
+.botao-menu:hover {
+  background-color: var(--cor-primaria-clara);
+  border-color: var(--cor-primaria);
 }
 
 /* ============================================
    6. MENU DO USUÁRIO
-============================================ */
+   ============================================ */
 
 .menu-usuario-container {
   position: relative;
@@ -288,11 +299,20 @@ body {
 
   padding: 8px 12px;
 
-  border: 1px solid var(--cor-borda, #e2e8f0);
-  border-radius: 8px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-medio);
 
-  background-color: var(--cor-fundo, #ffffff);
-  color: var(--cor-texto, #1e293b);
+  background-color: var(--cor-fundo-secundario);
+  color: var(--cor-texto);
+
+  transition:
+    background-color var(--transicao-padrao),
+    border-color var(--transicao-padrao);
+}
+
+.botao-usuario:hover {
+  background-color: var(--cor-fundo-terciario);
+  border-color: var(--cor-borda-forte);
 }
 
 .menu-usuario {
@@ -305,10 +325,10 @@ body {
   min-width: 180px;
   padding: 8px;
 
-  background-color: var(--cor-fundo, #ffffff);
+  background-color: var(--cor-fundo-secundario);
 
-  border: 1px solid var(--cor-borda, #e2e8f0);
-  border-radius: 8px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-medio);
 
   box-shadow: var(--sombra-media);
 
@@ -327,23 +347,29 @@ body {
   padding: 10px;
 
   border: none;
-  border-radius: 6px;
+  border-radius: var(--raio-pequeno);
 
   background: transparent;
 
-  color: var(--cor-texto, #1e293b);
+  color: var(--cor-texto);
   text-align: left;
   font-size: 13px;
+
+  cursor: pointer;
+  transition:
+    background-color var(--transicao-padrao),
+    color var(--transicao-padrao);
 }
 
 .menu-usuario a:hover,
 .menu-usuario button:hover {
-  background-color: var(--cor-fundo-secundaria, #f1f5f9);
+  background-color: var(--cor-primaria-clara);
+  color: var(--cor-primaria);
 }
 
 /* ============================================
    7. ORGANIZAÇÃO DOS CONTEÚDOS
-============================================ */
+   ============================================ */
 
 .secao {
   width: 100%;
@@ -360,8 +386,9 @@ body {
 }
 
 .secao-titulo {
+  color: var(--cor-primaria);
   font-size: 18px;
-  font-weight: 700;
+  font-weight: var(--peso-negrito);
 }
 
 /* GRID DE CONTEÚDO */
@@ -390,7 +417,7 @@ body {
 
 /* ============================================
    8. FORMULÁRIOS
-============================================ */
+   ============================================ */
 
 .formulario-container {
   width: 100%;
@@ -423,114 +450,8 @@ body {
 }
 
 /* ============================================
-   9. PÁGINA DE LOGIN
-============================================ */
-
-.pagina-login {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  min-height: 100vh;
-  padding: 24px;
-}
-
-.login-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
-  width: 100%;
-  max-width: 1050px;
-  min-height: 600px;
-
-  overflow: hidden;
-
-  background-color: var(--cor-fundo, #ffffff);
-
-  border-radius: 16px;
-
-  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.1);
-}
-
-/* PAINEL DE APRESENTAÇÃO */
-
-.login-apresentacao {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  padding: 48px;
-
-  background-color: var(--cor-secundaria, #0f172a);
-  color: #ffffff;
-}
-
-.login-apresentacao h1,
-.login-apresentacao h2 {
-  color: #ffffff;
-}
-
-.login-apresentacao-conteudo {
-  max-width: 400px;
-}
-
-.login-apresentacao-conteudo h2 {
-  margin-bottom: 18px;
-  font-size: 32px;
-  line-height: 1.3;
-}
-
-.login-apresentacao-conteudo p {
-  color: #cbd5e1;
-  font-size: 15px;
-  line-height: 1.8;
-}
-
-.login-apresentacao-rodape {
-  color: #94a3b8;
-  font-size: 12px;
-}
-
-/* PAINEL DO FORMULÁRIO */
-
-.login-formulario-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 48px;
-}
-
-.login-formulario-conteudo {
-  width: 100%;
-  max-width: 380px;
-}
-
-.login-titulo {
-  margin-bottom: 32px;
-}
-
-.login-titulo h2 {
-  margin-bottom: 10px;
-  font-size: 26px;
-}
-
-.login-titulo p {
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.login-rodape {
-  margin-top: 28px;
-
-  text-align: center;
-  font-size: 12px;
-  line-height: 1.6;
-}
-
-/* ============================================
-   10. PÁGINA DE DETALHES DO LEAD
-============================================ */
+   9. PÁGINA DE DETALHES DO LEAD
+   ============================================ */
 
 .detalhes-container {
   width: 100%;
@@ -564,8 +485,8 @@ body {
 }
 
 /* ============================================
-   11. RESPONSIVIDADE - TABLETS
-============================================ */
+   10. RESPONSIVIDADE - TABLETS
+   ============================================ */
 
 @media (max-width: 1100px) {
   .grid-indicadores {
@@ -583,8 +504,8 @@ body {
 }
 
 /* ============================================
-   12. RESPONSIVIDADE - CELULARES
-============================================ */
+   11. RESPONSIVIDADE - CELULARES
+   ============================================ */
 
 @media (max-width: 768px) {
   .conteudo-principal,
@@ -608,32 +529,15 @@ body {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .login-container {
-    grid-template-columns: 1fr;
-    max-width: 500px;
-  }
-
-  .login-apresentacao {
-    min-height: 220px;
-    padding: 28px;
-  }
-
-  .login-apresentacao-conteudo h2 {
-    font-size: 24px;
-  }
-
-  .login-apresentacao-rodape {
-    display: none;
-  }
-
-  .login-formulario-container {
-    padding: 32px 28px;
+  .detalhes-cabecalho {
+    align-items: flex-start;
+    flex-wrap: wrap;
   }
 }
 
 /* ============================================
-   13. RESPONSIVIDADE - CELULARES PEQUENOS
-============================================ */
+   12. RESPONSIVIDADE - CELULARES PEQUENOS
+   ============================================ */
 
 @media (max-width: 480px) {
   .conteudo-principal,
@@ -656,18 +560,5 @@ body {
   .formulario-acoes {
     flex-direction: column-reverse;
     align-items: stretch;
-  }
-
-  .login-container {
-    border-radius: 10px;
-  }
-
-  .login-apresentacao {
-    min-height: 180px;
-    padding: 22px;
-  }
-
-  .login-formulario-container {
-    padding: 28px 20px;
   }
 }

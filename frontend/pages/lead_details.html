@@ -21,22 +21,22 @@
       <!-- SIDEBAR -->
       <aside class="barra-lateral" id="barraLateral">
         <div class="logo">
-          <a href="dashboard.html">
-            <span class="logo-texto">LeadFlow</span>
+          <a href="dashboard.html" class="logo-link">
+            <img
+              src="../assets/images/logo-focus.png"
+              alt="FOCUS"
+              class="logo-imagem-focus"
+            />
+            <span class="logo-texto">LeadFlow - FOCUS</span>
           </a>
         </div>
 
         <nav class="navegacao">
           <span class="nav-titulo">MENU PRINCIPAL</span>
 
-          <a href="dashboard.html" class="nav-link">
+          <a href="dashboard.html" class="nav-link ativo">
             <span class="nav-icone">▦</span>
             <span>Dashboard</span>
-          </a>
-
-          <a href="leads.html" class="nav-link ativo">
-            <span class="nav-icone">☷</span>
-            <span>Leads</span>
           </a>
         </nav>
 
@@ -100,11 +100,10 @@
             </div>
 
             <div class="acoes-detalhes-lead">
-              <a href="leads.html" class="botao-secundario">
-                ← Voltar para leads
+              <a href="dashboard.html" class="botao-secundario">
+                ← Voltar ao Dashboard
               </a>
 
-              <!-- O JavaScript utiliza este ID para configurar a edição. -->
               <button type="button" id="botaoEditarLead" class="botao-primario">
                 Editar lead
               </button>
@@ -123,15 +122,13 @@
             </div>
 
             <div class="status-prioridade-lead">
-              <span id="prioridadeLead" class="badge badge-media"> Média </span>
-
-              <span id="statusLead" class="badge badge-novo"> Novo </span>
+              <span id="prioridadeLead" class="badge badge-media">Média</span>
+              <span id="statusLead" class="badge badge-novo">Novo</span>
             </div>
           </section>
 
           <!-- GRADE DE INFORMAÇÕES -->
           <div class="grade-detalhes-lead">
-            <!-- COLUNA PRINCIPAL -->
             <div class="coluna-detalhes-lead">
               <section class="cartao-detalhes">
                 <h3>Informações de contato</h3>
@@ -191,11 +188,8 @@
 
                 <div class="prioridade-ia">
                   <h3>Prioridade identificada</h3>
-
                   <p class="prioridade-valor" id="prioridadeIA">--</p>
-
                   <p><strong>Justificativa:</strong></p>
-
                   <p id="justificativaLead">
                     Nenhuma justificativa disponível.
                   </p>
@@ -203,7 +197,6 @@
 
                 <div class="abordagem-sugerida">
                   <h3>Sugestão de abordagem inicial</h3>
-
                   <p id="abordagemLead">Nenhuma sugestão disponível.</p>
                 </div>
               </section>
@@ -211,10 +204,36 @@
               <!-- OBSERVAÇÕES -->
               <section class="cartao-detalhes">
                 <h3>Observações</h3>
-
                 <p class="observacoes-lead" id="observacoesLead">
                   Nenhuma observação registrada.
                 </p>
+              </section>
+
+              <!-- HISTÓRICO DE CONTATOS -->
+              <section class="cartao-detalhes">
+                <div class="cabecalho-historico-contatos">
+                  <div>
+                    <h3>Histórico de contatos</h3>
+                    <p>
+                      Acompanhe as tentativas de contato realizadas com este
+                      lead.
+                    </p>
+                  </div>
+
+                  <span id="totalTentativasContato" class="badge badge-media">
+                    0 tentativas
+                  </span>
+                </div>
+
+                <div
+                  id="historicoContatos"
+                  class="historico-contatos"
+                  aria-live="polite"
+                >
+                  <p id="semHistoricoContatos">
+                    Nenhuma tentativa de contato registrada.
+                  </p>
+                </div>
               </section>
             </div>
 
@@ -239,6 +258,63 @@
                   </button>
 
                   <p id="mensagemStatus" aria-live="polite"></p>
+                </form>
+              </section>
+
+              <!-- REGISTRAR NOVA TENTATIVA -->
+              <section class="cartao-detalhes">
+                <h3>Registrar tentativa de contato</h3>
+
+                <form
+                  id="formularioTentativaContato"
+                  class="formulario-contato"
+                >
+                  <div class="campo-formulario">
+                    <label for="canalContato">Canal de contato</label>
+
+                    <select id="canalContato" name="canal" required>
+                      <option value="">Selecione o canal</option>
+                      <option value="WhatsApp">WhatsApp</option>
+                      <option value="E-mail">E-mail</option>
+                      <option value="Ligação">Ligação</option>
+                    </select>
+                  </div>
+
+                  <div class="campo-formulario">
+                    <label for="resultadoContato">Resultado da tentativa</label>
+
+                    <select id="resultadoContato" name="resultado" required>
+                      <option value="">Selecione o resultado</option>
+                      <option value="Sem resposta">Sem resposta</option>
+                      <option value="Aguardando retorno">
+                        Aguardando retorno
+                      </option>
+                      <option value="Retorno solicitado">
+                        Retorno solicitado
+                      </option>
+                      <option value="Interessado">Interessado</option>
+                      <option value="Não interessado">Não interessado</option>
+                    </select>
+                  </div>
+
+                  <div class="campo-formulario">
+                    <label for="observacaoContato">
+                      Observação (opcional)
+                    </label>
+
+                    <textarea
+                      id="observacaoContato"
+                      name="observacao"
+                      rows="4"
+                      placeholder="Descreva o que aconteceu durante o contato..."
+                    ></textarea>
+                  </div>
+
+                  <button type="submit" class="botao-primario">
+                    Registrar tentativa
+                  </button>
+
+                  <p id="mensagemContato" aria-live="polite"></p>
                 </form>
               </section>
 
@@ -275,6 +351,6 @@
     <script src="../js/services/leads2.js" defer></script>
     <script src="../js/components/sidebar.js" defer></script>
     <script src="../js/components/header.js" defer></script>
-    <script src="../js/pages/lead-details.js" defer></script>
+    <script src="../js/pages/lead_details.js" defer></script>
   </body>
 </html>
