@@ -1,10 +1,11 @@
 /* ============================================
    LEADFLOW - FORMULÁRIO DE LEAD
-   ============================================ */
+   Identidade visual Focus
+============================================ */
 
 /* ============================================
    1. ESTRUTURA PRINCIPAL
-   ============================================ */
+============================================ */
 
 .pagina-formulario-lead {
   width: 100%;
@@ -13,7 +14,7 @@
 
 /* ============================================
    2. INTRODUÇÃO
-   ============================================ */
+============================================ */
 
 .formulario-introducao {
   margin-bottom: 24px;
@@ -23,12 +24,17 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
+
   margin-bottom: 20px;
+
   color: var(--cor-texto-secundario);
+  font-family: var(--fonte-principal);
   font-size: 13px;
   font-weight: 500;
+
   text-decoration: none;
-  transition: color var(--transicao-padrao);
+
+  transition: color var(--transicao-rapida);
 }
 
 .link-voltar:hover {
@@ -37,45 +43,54 @@
 
 .formulario-introducao h2 {
   margin: 0 0 8px;
-  color: var(--cor-texto);
+
+  color: var(--cor-primaria);
+  font-family: var(--fonte-titulos);
   font-size: 20px;
   font-weight: 700;
 }
 
 .formulario-introducao p {
   margin: 0;
+
   color: var(--cor-texto-secundario);
+  font-family: var(--fonte-principal);
   font-size: 14px;
   line-height: 1.6;
 }
 
 /* ============================================
    3. CARTÃO DO FORMULÁRIO
-   ============================================ */
+============================================ */
 
 .card-formulario {
   width: 100%;
   min-width: 0;
+
   padding: 28px;
+
   border: 1px solid var(--cor-borda);
   border-radius: var(--raio-medio);
-  background-color: var(--cor-fundo);
+
+  background-color: var(--cor-branco);
   box-shadow: var(--sombra-card);
 }
 
 /* ============================================
    4. GRUPOS DO FORMULÁRIO
-   ============================================ */
+============================================ */
 
 .grupo-formulario {
   padding-bottom: 28px;
   margin-bottom: 28px;
+
   border-bottom: 1px solid var(--cor-borda);
 }
 
 .grupo-formulario:last-of-type {
   padding-bottom: 0;
   margin-bottom: 24px;
+
   border-bottom: none;
 }
 
@@ -85,21 +100,25 @@
 
 .grupo-formulario-cabecalho h3 {
   margin: 0 0 7px;
-  color: var(--cor-texto);
+
+  color: var(--cor-primaria);
+  font-family: var(--fonte-titulos);
   font-size: 16px;
   font-weight: 700;
 }
 
 .grupo-formulario-cabecalho p {
   margin: 0;
+
   color: var(--cor-texto-secundario);
+  font-family: var(--fonte-principal);
   font-size: 13px;
   line-height: 1.5;
 }
 
 /* ============================================
    5. GRADE DOS CAMPOS
-   ============================================ */
+============================================ */
 
 .grade-formulario {
   display: grid;
@@ -109,19 +128,21 @@
 
 /* ============================================
    6. CAMPOS
-   ============================================ */
+============================================ */
 
 .campo-formulario {
   display: flex;
   flex-direction: column;
   gap: 8px;
+
   min-width: 0;
 }
 
 .campo-formulario label {
   color: var(--cor-texto);
+  font-family: var(--fonte-principal);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .campo-formulario input,
@@ -129,17 +150,23 @@
 .campo-formulario textarea {
   width: 100%;
   min-width: 0;
+
   padding: 11px 13px;
+
   border: 1px solid var(--cor-borda-forte);
   border-radius: var(--raio-pequeno);
-  background-color: var(--cor-fundo);
+
+  background-color: var(--cor-branco);
   color: var(--cor-texto);
-  font-family: inherit;
+
+  font-family: var(--fonte-principal);
   font-size: 13px;
+
   outline: none;
+
   transition:
-    border-color var(--transicao-padrao),
-    box-shadow var(--transicao-padrao);
+    border-color var(--transicao-rapida),
+    box-shadow var(--transicao-rapida);
 }
 
 .campo-formulario input,
@@ -161,8 +188,9 @@
 .campo-formulario input:focus,
 .campo-formulario select:focus,
 .campo-formulario textarea:focus {
-  border-color: var(--cor-primaria);
-  box-shadow: 0 0 0 3px rgba(18, 59, 93, 0.12);
+  border-color: var(--cor-secundaria);
+
+  box-shadow: 0 0 0 3px rgba(0, 103, 236, 0.12);
 }
 
 .campo-formulario input:disabled,
@@ -175,15 +203,19 @@
 
 /* ============================================
    7. MENSAGENS DE ERRO
-   ============================================ */
+============================================ */
 
 #errosFormulario {
   margin-bottom: 20px;
   padding: 14px 16px;
-  border: 1px solid var(--cor-erro);
+
+  border: 1px solid #f2c5ca;
   border-radius: var(--raio-pequeno);
-  background-color: var(--cor-erro-clara);
+
+  background-color: #fcedef;
   color: var(--cor-erro);
+
+  font-family: var(--fonte-principal);
   font-size: 13px;
   line-height: 1.6;
 }
@@ -194,15 +226,17 @@
 
 /* ============================================
    8. AÇÕES DO FORMULÁRIO
-   ============================================ */
+============================================ */
 
 .acoes-formulario {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   flex-wrap: wrap;
+
   gap: 12px;
   padding-top: 22px;
+
   border-top: 1px solid var(--cor-borda);
 }
 
@@ -214,7 +248,7 @@
 
 /* ============================================
    9. RESPONSIVIDADE
-   ============================================ */
+============================================ */
 
 @media (max-width: 900px) {
   .card-formulario {

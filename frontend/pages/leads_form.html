@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>LeadFlow | Cadastro de Lead</title>
-
     <meta
       name="description"
       content="Cadastro e gerenciamento de leads no LeadFlow."
@@ -15,6 +14,32 @@
     <link rel="stylesheet" href="../css/layout.css" />
     <link rel="stylesheet" href="../css/components.css" />
     <link rel="stylesheet" href="../css/pages/lead_form.css" />
+
+    <style>
+      .barra-lateral .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 10px 0;
+        margin-bottom: 45px;
+      }
+
+      .barra-lateral .logo-link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        text-decoration: none;
+      }
+
+      .barra-lateral .logo-imagem-focus {
+        display: block;
+        width: 155px;
+        height: 155px;
+        max-width: 100%;
+        object-fit: contain;
+      }
+    </style>
   </head>
 
   <body>
@@ -24,11 +49,10 @@
         <div class="logo">
           <a href="dashboard.html" class="logo-link">
             <img
-              src="../assets/images/logo-focus.png"
-              alt="FOCUS"
+              src="../assets/images/logo-focus-3.png"
+              alt="FOCUS Consultoria"
               class="logo-imagem-focus"
             />
-            <span class="logo-texto">LeadFlow - FOCUS</span>
           </a>
         </div>
 
@@ -76,7 +100,6 @@
 
             <div>
               <h1 id="tituloFormulario">Cadastrar novo lead</h1>
-
               <p class="texto-superior">
                 Registre e organize novos contatos no sistema.
               </p>
@@ -101,7 +124,6 @@
             </a>
 
             <h2>Informações do lead</h2>
-
             <p>
               Preencha os campos abaixo para registrar um novo lead no sistema.
             </p>
@@ -120,6 +142,7 @@
                 <div class="grade-formulario">
                   <div class="campo-formulario">
                     <label for="nomeLead">Nome do contato *</label>
+
                     <input
                       type="text"
                       id="nomeLead"
@@ -133,6 +156,7 @@
 
                   <div class="campo-formulario">
                     <label for="empresaLead">Nome da empresa *</label>
+
                     <input
                       type="text"
                       id="empresaLead"
@@ -145,6 +169,7 @@
 
                   <div class="campo-formulario">
                     <label for="emailLead">E-mail *</label>
+
                     <input
                       type="email"
                       id="emailLead"
@@ -158,6 +183,7 @@
 
                   <div class="campo-formulario">
                     <label for="telefoneLead">Telefone *</label>
+
                     <input
                       type="tel"
                       id="telefoneLead"
@@ -184,6 +210,7 @@
                 <div class="grade-formulario">
                   <div class="campo-formulario">
                     <label for="segmentoLead">Segmento da empresa *</label>
+
                     <select id="segmentoLead" name="segmento" required>
                       <option value="">Selecione um segmento</option>
                       <option value="Tecnologia">Tecnologia</option>
@@ -198,6 +225,7 @@
 
                   <div class="campo-formulario">
                     <label for="origemLead">Origem do lead *</label>
+
                     <select id="origemLead" name="origem" required>
                       <option value="">Selecione a origem</option>
                       <option value="SITE">Site</option>
@@ -209,6 +237,7 @@
                     <label for="responsavelLead">
                       Responsável pelo atendimento
                     </label>
+
                     <select id="responsavelLead" name="responsavel">
                       <option value="">Selecione um responsável</option>
                       <option value="Administrador">Administrador</option>
@@ -234,6 +263,7 @@
                   <label for="descricaoLead">
                     Descrição da necessidade *
                   </label>
+
                   <textarea
                     id="descricaoLead"
                     name="descricao"
@@ -257,6 +287,7 @@
 
                 <div class="campo-formulario">
                   <label for="observacoesLead">Observações</label>
+
                   <textarea
                     id="observacoesLead"
                     name="observacoes"
@@ -311,10 +342,8 @@
     <!-- JAVASCRIPT -->
     <script src="../js/utils/dom.js" defer></script>
     <script src="../js/utils/validators.js" defer></script>
-
     <script src="../js/services/api.js" defer></script>
     <script src="../js/services/leads2.js" defer></script>
-
     <script src="../js/components/sidebar.js" defer></script>
     <script src="../js/components/header.js" defer></script>
     <script src="../js/components/lead_form.js" defer></script>

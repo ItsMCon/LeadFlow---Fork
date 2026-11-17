@@ -14,6 +14,32 @@
     <link rel="stylesheet" href="../css/layout.css" />
     <link rel="stylesheet" href="../css/components.css" />
     <link rel="stylesheet" href="../css/pages/lead_details.css" />
+
+    <style>
+      .barra-lateral .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 10px 0;
+        margin-bottom: 45px;
+      }
+
+      .barra-lateral .logo-link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        text-decoration: none;
+      }
+
+      .barra-lateral .logo-imagem-focus {
+        display: block;
+        width: 155px;
+        height: 155px;
+        max-width: 100%;
+        object-fit: contain;
+      }
+    </style>
   </head>
 
   <body>
@@ -23,11 +49,10 @@
         <div class="logo">
           <a href="dashboard.html" class="logo-link">
             <img
-              src="../assets/images/logo-focus.png"
-              alt="FOCUS"
+              src="../assets/images/logo-focus-3.png"
+              alt="FOCUS Consultoria"
               class="logo-imagem-focus"
             />
-            <span class="logo-texto">LeadFlow - FOCUS</span>
           </a>
         </div>
 
@@ -43,6 +68,7 @@
         <div class="sidebar-rodape">
           <div class="usuario-sidebar">
             <div class="avatar">A</div>
+
             <div class="usuario-informacoes">
               <strong>Administrador</strong>
               <span>Conta administrativa</span>
@@ -82,6 +108,7 @@
 
           <div class="cabecalho-usuario">
             <div class="usuario-avatar">A</div>
+
             <div class="usuario-texto">
               <strong>Administrador</strong>
               <span>Conta administrativa</span>
@@ -190,6 +217,7 @@
                   <h3>Prioridade identificada</h3>
                   <p class="prioridade-valor" id="prioridadeIA">--</p>
                   <p><strong>Justificativa:</strong></p>
+
                   <p id="justificativaLead">
                     Nenhuma justificativa disponível.
                   </p>
@@ -204,6 +232,7 @@
               <!-- OBSERVAÇÕES -->
               <section class="cartao-detalhes">
                 <h3>Observações</h3>
+
                 <p class="observacoes-lead" id="observacoesLead">
                   Nenhuma observação registrada.
                 </p>

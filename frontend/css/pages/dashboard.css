@@ -1,10 +1,11 @@
 /* ============================================
    LEADFLOW - ESTILIZAÇÃO DO DASHBOARD
-   ============================================ */
+   Identidade visual Focus
+============================================ */
 
 /* ============================================
    1. ESTRUTURA PRINCIPAL
-   ============================================ */
+============================================ */
 
 .conteudo-principal {
   width: 100%;
@@ -13,7 +14,7 @@
 
 /* ============================================
    2. CABEÇALHO
-   ============================================ */
+============================================ */
 
 .cabecalho-pagina {
   display: flex;
@@ -34,6 +35,7 @@
 .cabecalho-titulo h1 {
   margin: 0;
   color: var(--cor-texto);
+  font-family: var(--fonte-titulos);
   font-size: 28px;
   font-weight: 700;
 }
@@ -41,6 +43,7 @@
 .texto-superior {
   margin: 6px 0 0;
   color: var(--cor-texto-secundario);
+  font-family: var(--fonte-principal);
   font-size: 13px;
 }
 
@@ -53,18 +56,20 @@
 
 .cabecalho-usuario strong {
   color: var(--cor-texto);
+  font-family: var(--fonte-principal);
   font-size: 14px;
 }
 
 .cabecalho-usuario span {
   display: block;
   color: var(--cor-texto-secundario);
+  font-family: var(--fonte-principal);
   font-size: 12px;
 }
 
 /* ============================================
    3. BOTÃO DO MENU
-   ============================================ */
+============================================ */
 
 .botao-menu {
   display: inline-flex;
@@ -75,23 +80,24 @@
   height: 40px;
   border: 1px solid var(--cor-borda);
   border-radius: var(--raio-pequeno);
-  background-color: var(--cor-fundo);
-  color: var(--cor-texto);
+  background-color: #ffffff;
+  color: #0032b9;
   font-size: 20px;
   cursor: pointer;
   transition:
-    background-color var(--transicao-padrao),
-    border-color var(--transicao-padrao);
+    background-color var(--transicao-rapida),
+    border-color var(--transicao-rapida),
+    color var(--transicao-rapida);
 }
 
 .botao-menu:hover {
-  background-color: var(--cor-fundo-secundario);
-  border-color: var(--cor-borda-forte);
+  background-color: #eaf0ff;
+  border-color: #0032b9;
 }
 
 /* ============================================
    4. INDICADORES DO DASHBOARD
-   ============================================ */
+============================================ */
 
 .leads-indicadores {
   display: grid;
@@ -106,11 +112,11 @@
   padding: 22px;
   border: 1px solid var(--cor-borda);
   border-radius: var(--raio-medio);
-  background-color: var(--cor-fundo);
+  background-color: #ffffff;
   box-shadow: var(--sombra-card);
   transition:
-    transform var(--transicao-padrao),
-    box-shadow var(--transicao-padrao);
+    transform var(--transicao-rapida),
+    box-shadow var(--transicao-rapida);
 }
 
 .indicador-card:hover {
@@ -122,6 +128,7 @@
 .indicador-card .indicador-titulo {
   margin: 0 0 13px;
   color: var(--cor-texto-secundario);
+  font-family: var(--fonte-principal);
   font-size: 13px;
   font-weight: 500;
 }
@@ -129,7 +136,8 @@
 .indicador-card strong,
 .indicador-card .indicador-valor {
   display: block;
-  color: var(--cor-texto);
+  color: #0032b9;
+  font-family: var(--fonte-titulos);
   font-size: 30px;
   font-weight: 700;
 }
@@ -138,12 +146,13 @@
 .indicador-card .indicador-descricao {
   margin: 9px 0 0;
   color: var(--cor-texto-claro);
+  font-family: var(--fonte-principal);
   font-size: 12px;
 }
 
 /* ============================================
    5. ÁREA DE LEADS
-   ============================================ */
+============================================ */
 
 .card-leads {
   width: 100%;
@@ -151,7 +160,7 @@
   padding: 24px;
   border: 1px solid var(--cor-borda);
   border-radius: var(--raio-medio);
-  background-color: var(--cor-fundo);
+  background-color: #ffffff;
   box-shadow: var(--sombra-card);
 }
 
@@ -166,6 +175,7 @@
 .leads-cabecalho h2 {
   margin: 0;
   color: var(--cor-texto);
+  font-family: var(--fonte-titulos);
   font-size: 19px;
   font-weight: 700;
 }
@@ -173,12 +183,13 @@
 .leads-cabecalho p {
   margin: 6px 0 0;
   color: var(--cor-texto-secundario);
+  font-family: var(--fonte-principal);
   font-size: 13px;
 }
 
 /* ============================================
    6. BOTÕES
-   ============================================ */
+============================================ */
 
 .botao-primario {
   display: inline-flex;
@@ -187,22 +198,23 @@
   gap: 8px;
   min-height: 42px;
   padding: 10px 17px;
-  border: 1px solid var(--cor-primaria);
+  border: 1px solid #0032b9;
   border-radius: var(--raio-pequeno);
-  background-color: var(--cor-primaria);
-  color: var(--cor-texto-invertido);
+  background-color: #0032b9;
+  color: #ffffff;
+  font-family: var(--fonte-principal);
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
   transition:
-    background-color var(--transicao-padrao),
-    border-color var(--transicao-padrao);
+    background-color var(--transicao-rapida),
+    border-color var(--transicao-rapida);
 }
 
 .botao-primario:hover {
-  background-color: var(--cor-primaria-hover);
-  border-color: var(--cor-primaria-hover);
+  background-color: #002a9c;
+  border-color: #002a9c;
 }
 
 .botao-secundario {
@@ -214,24 +226,27 @@
   padding: 9px 15px;
   border: 1px solid var(--cor-borda-forte);
   border-radius: var(--raio-pequeno);
-  background-color: var(--cor-fundo);
+  background-color: #ffffff;
   color: var(--cor-texto);
+  font-family: var(--fonte-principal);
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
   transition:
-    background-color var(--transicao-padrao),
-    border-color var(--transicao-padrao);
+    background-color var(--transicao-rapida),
+    border-color var(--transicao-rapida),
+    color var(--transicao-rapida);
 }
 
 .botao-secundario:hover {
-  background-color: var(--cor-fundo-secundario);
-  border-color: var(--cor-borda-forte);
+  background-color: #eaf3ff;
+  border-color: #0067ec;
+  color: #0032b9;
 }
 
 /* ============================================
    7. PESQUISA E FILTROS
-   ============================================ */
+============================================ */
 
 .filtros-leads {
   display: flex;
@@ -248,27 +263,26 @@
   padding: 10px 14px;
   border: 1px solid var(--cor-borda-forte);
   border-radius: var(--raio-pequeno);
-  background-color: var(--cor-fundo);
+  background-color: #ffffff;
   color: var(--cor-texto);
+  font-family: var(--fonte-principal);
   font-size: 13px;
   outline: none;
   transition:
-    border-color var(--transicao-padrao),
-    box-shadow var(--transicao-padrao);
+    border-color var(--transicao-rapida),
+    box-shadow var(--transicao-rapida);
 }
 
 #pesquisaLeads:focus {
-  border-color: var(--cor-primaria);
-  box-shadow: 0 0 0 3px rgba(18, 59, 93, 0.12);
+  border-color: #0067ec;
+  box-shadow: 0 0 0 3px rgba(0, 103, 236, 0.12);
 }
 
 #pesquisaLeads::placeholder {
   color: var(--cor-texto-claro);
 }
 
-/* Filtros de status e responsável.
-   O filtro de prioridade permanece apenas por
-   compatibilidade caso ainda exista no HTML. */
+/* Filtros de status, prioridade e responsável */
 
 #filtroStatus,
 #filtroPrioridade,
@@ -278,26 +292,27 @@
   padding: 9px 12px;
   border: 1px solid var(--cor-borda-forte);
   border-radius: var(--raio-pequeno);
-  background-color: var(--cor-fundo);
+  background-color: #ffffff;
   color: var(--cor-texto);
+  font-family: var(--fonte-principal);
   font-size: 13px;
   cursor: pointer;
   outline: none;
   transition:
-    border-color var(--transicao-padrao),
-    box-shadow var(--transicao-padrao);
+    border-color var(--transicao-rapida),
+    box-shadow var(--transicao-rapida);
 }
 
 #filtroStatus:focus,
 #filtroPrioridade:focus,
 #filtroResponsavel:focus {
-  border-color: var(--cor-primaria);
-  box-shadow: 0 0 0 3px rgba(18, 59, 93, 0.12);
+  border-color: #0067ec;
+  box-shadow: 0 0 0 3px rgba(0, 103, 236, 0.12);
 }
 
 /* ============================================
    8. TABELA DE LEADS
-   ============================================ */
+============================================ */
 
 .tabela-container {
   width: 100%;
@@ -314,12 +329,13 @@
 }
 
 .tabela-leads thead {
-  background-color: var(--cor-fundo-secundario);
+  background-color: #f5f7fa;
 }
 
 .tabela-leads th {
   padding: 15px 16px;
   color: var(--cor-texto-secundario);
+  font-family: var(--fonte-principal);
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
@@ -331,6 +347,7 @@
   padding: 16px;
   border-top: 1px solid var(--cor-borda);
   color: var(--cor-texto);
+  font-family: var(--fonte-principal);
   font-size: 13px;
   white-space: nowrap;
 }
@@ -340,12 +357,12 @@
 }
 
 .tabela-leads tbody tr:hover {
-  background-color: var(--cor-fundo-secundario);
+  background-color: #f5f7fa;
 }
 
 /* ============================================
    9. STATUS E PRIORIDADE
-   ============================================ */
+============================================ */
 
 .badge {
   display: inline-flex;
@@ -353,34 +370,35 @@
   justify-content: center;
   padding: 5px 10px;
   border-radius: 20px;
+  font-family: var(--fonte-principal);
   font-size: 11px;
   font-weight: 600;
   white-space: nowrap;
 }
 
 .badge-novo {
-  background-color: var(--cor-info-clara);
-  color: var(--cor-info);
+  background-color: #eaf3ff;
+  color: #0067ec;
 }
 
 .badge-contato {
-  background-color: var(--cor-aviso-clara);
-  color: var(--cor-aviso);
+  background-color: #fff4df;
+  color: #a96800;
 }
 
 .badge-qualificacao {
-  background-color: var(--cor-secundaria-clara);
-  color: var(--cor-secundaria);
+  background-color: #eaf0ff;
+  color: #0032b9;
 }
 
 .badge-convertido {
-  background-color: var(--cor-sucesso-clara);
-  color: var(--cor-sucesso);
+  background-color: #eaf6ec;
+  color: #2f993d;
 }
 
 .badge-perdido {
-  background-color: var(--cor-erro-clara);
-  color: var(--cor-erro);
+  background-color: #fdedec;
+  color: #e53324;
 }
 
 /* Compatibilidade com registros antigos.
@@ -388,23 +406,23 @@
    posição relativa no ranking, não como categoria. */
 
 .badge-alta {
-  background-color: var(--cor-erro-clara);
-  color: var(--cor-erro);
+  background-color: #fdedec;
+  color: #e53324;
 }
 
 .badge-media {
-  background-color: var(--cor-aviso-clara);
-  color: var(--cor-aviso);
+  background-color: #fff4df;
+  color: #a96800;
 }
 
 .badge-baixa {
-  background-color: var(--cor-sucesso-clara);
-  color: var(--cor-sucesso);
+  background-color: #eaf6ec;
+  color: #2f993d;
 }
 
 /* ============================================
    10. AÇÕES DA TABELA
-   ============================================ */
+============================================ */
 
 .acoes-tabela {
   display: flex;
@@ -419,22 +437,25 @@
   min-width: 38px;
   min-height: 32px;
   padding: 6px 10px;
-  border: 1px solid var(--cor-primaria-clara);
+  border: 1px solid #d5e1ff;
   border-radius: var(--raio-pequeno);
-  background-color: var(--cor-primaria-clara);
-  color: var(--cor-primaria);
+  background-color: #eaf0ff;
+  color: #0032b9;
+  font-family: var(--fonte-principal);
   font-size: 12px;
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
   transition:
-    background-color var(--transicao-padrao),
-    border-color var(--transicao-padrao);
+    background-color var(--transicao-rapida),
+    border-color var(--transicao-rapida),
+    color var(--transicao-rapida);
 }
 
 .botao-acao:hover {
-  background-color: var(--cor-secundaria-clara);
-  border-color: var(--cor-secundaria-clara);
+  background-color: #0067ec;
+  border-color: #0067ec;
+  color: #ffffff;
 }
 
 .botao-acao[aria-disabled="true"] {
@@ -444,23 +465,25 @@
 
 /* ============================================
    11. ESTADOS DA TABELA
-   ============================================ */
+============================================ */
 
 #semResultados,
 #carregandoLeads {
   padding: 25px;
   color: var(--cor-texto-secundario);
-  text-align: center;
+  font-family: var(--fonte-principal);
   font-size: 14px;
+  text-align: center;
 }
 
 #erroCarregamento {
   margin: 15px 0;
   padding: 14px;
-  border: 1px solid var(--cor-erro);
+  border: 1px solid #e53324;
   border-radius: var(--raio-pequeno);
-  background-color: var(--cor-erro-clara);
-  color: var(--cor-erro);
+  background-color: #fdedec;
+  color: #b42318;
+  font-family: var(--fonte-principal);
   font-size: 13px;
 }
 
@@ -472,7 +495,7 @@
 
 /* ============================================
    12. RESPONSIVIDADE
-   ============================================ */
+============================================ */
 
 @media (max-width: 1100px) {
   .leads-indicadores {

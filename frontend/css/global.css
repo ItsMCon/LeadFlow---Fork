@@ -1,32 +1,80 @@
 /* ============================================
    LEADFLOW - ESTILOS GLOBAIS
-   Identidade visual provisória Focus
-   ============================================ */
+   Identidade visual Focus
+============================================ */
 
 /* ============================================
-   1. VARIÁVEIS GLOBAIS
-   ============================================ */
+   1. FONTES
+============================================ */
+
+@font-face {
+  font-family: "Aileron";
+  src: url("../assets/fonts/aileron/Aileron-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aileron";
+  src: url("../assets/fonts/aileron/Aileron-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Clear Sans";
+  src: url("../assets/fonts/clear-sans/ClearSans-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Clear Sans";
+  src: url("../assets/fonts/clear-sans/ClearSans-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================
+   2. VARIÁVEIS GLOBAIS
+============================================ */
 
 :root {
-  /* Identidade visual Focus - provisória */
-  --cor-primaria: #123b5d;
-  --cor-primaria-hover: #0b2d49;
-  --cor-primaria-clara: #e8f0f6;
+  /* Cores principais Focus */
+  --cor-primaria: #0032b9;
+  --cor-primaria-hover: #002a9c;
+  --cor-primaria-light: #eaf0ff;
 
-  --cor-secundaria: #1976a5;
-  --cor-secundaria-hover: #125f86;
-  --cor-secundaria-clara: #e6f3f8;
+  --cor-secundaria: #0067ec;
+  --cor-secundaria-hover: #0055c7;
+  --cor-secundaria-light: #eaf3ff;
 
-  /* Cores de fundo */
-  --cor-fundo: #f4f6f8;
-  --cor-fundo-secundario: #ffffff;
-  --cor-fundo-terciario: #eaf0f4;
+  /* Cor de destaque */
+  --cor-destaque: #29dbe2;
+  --cor-destaque-light: #e5fbfc;
+
+  /* Cores de apoio */
+  --cor-apoio-roxo: #8b5fa4;
+  --cor-apoio-verde: #2f993d;
+  --cor-apoio-amarelo: #fbe23e;
+  --cor-apoio-laranja: #f6a52d;
+  --cor-apoio-vermelho: #e53324;
+  --cor-apoio-rosa: #e64c94;
+  --cor-apoio-magenta: #b41252;
 
   /* Cores de texto */
   --cor-texto: #172b3a;
-  --cor-texto-secundario: #536777;
+  --cor-texto-secundario: #495766;
   --cor-texto-claro: #8293a0;
-  --cor-texto-invertido: #ffffff;
+
+  /* Fundos */
+  --cor-fundo: #f5f7fa;
+  --cor-fundo-secundario: #eaf0f4;
+  --cor-branco: #ffffff;
 
   /* Bordas */
   --cor-borda: #dce4ea;
@@ -34,69 +82,33 @@
 
   /* Estados */
   --cor-sucesso: #16835d;
-  --cor-sucesso-clara: #e6f5ee;
-
   --cor-erro: #c43d48;
-  --cor-erro-clara: #fcebed;
-
-  --cor-aviso: #b7791f;
-  --cor-aviso-clara: #fff5df;
-
-  --cor-info: #1976a5;
-  --cor-info-clara: #e6f3f8;
+  --cor-alerta: #b7791f;
 
   /* Tipografia */
-  --fonte-principal: "Inter", "Segoe UI", Arial, sans-serif;
+  --fonte-titulos: "Aileron", "Segoe UI", Arial, sans-serif;
+  --fonte-principal: "Clear Sans", "Segoe UI", Arial, sans-serif;
 
-  --fonte-pequena: 0.75rem;
-  --fonte-secundaria: 0.875rem;
-  --fonte-normal: 1rem;
-  --fonte-media: 1.125rem;
-  --fonte-grande: 1.25rem;
-  --fonte-titulo: 1.5rem;
-  --fonte-titulo-grande: 1.875rem;
-
-  /* Pesos */
-  --peso-normal: 400;
-  --peso-medio: 500;
-  --peso-semi: 600;
-  --peso-negrito: 700;
-
-  /* Espaçamentos */
-  --espaco-1: 4px;
-  --espaco-2: 8px;
-  --espaco-3: 12px;
-  --espaco-4: 16px;
-  --espaco-5: 20px;
-  --espaco-6: 24px;
-  --espaco-8: 32px;
-  --espaco-10: 40px;
-  --espaco-12: 48px;
+  /* Layout */
+  --largura-sidebar: 260px;
+  --altura-header: 72px;
 
   /* Bordas arredondadas */
   --raio-pequeno: 6px;
   --raio-medio: 10px;
   --raio-grande: 14px;
-  --raio-extra: 20px;
-  --raio-circular: 50%;
 
   /* Sombras */
-  --sombra-pequena: 0 1px 3px rgba(18, 59, 93, 0.08);
-  --sombra-media: 0 4px 12px rgba(18, 59, 93, 0.1);
-  --sombra-grande: 0 8px 24px rgba(18, 59, 93, 0.12);
+  --sombra-card: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --sombra-card-hover: 0 4px 14px rgba(0, 0, 0, 0.1);
 
   /* Transições */
-  --transicao-padrao: 0.2s ease;
-  --transicao-suave: 0.3s ease;
-
-  /* Layout */
-  --largura-sidebar: 260px;
-  --altura-header: 72px;
+  --transicao-rapida: 0.2s ease;
 }
 
 /* ============================================
-   2. RESET E CONFIGURAÇÕES GERAIS
-   ============================================ */
+   3. RESET GLOBAL
+============================================ */
 
 * {
   margin: 0;
@@ -106,45 +118,19 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px;
 }
 
 body {
-  min-height: 100vh;
   font-family: var(--fonte-principal);
-  font-size: var(--fonte-normal);
-  font-weight: var(--peso-normal);
+  font-size: 14px;
   line-height: 1.5;
   color: var(--cor-texto);
   background-color: var(--cor-fundo);
-  -webkit-font-smoothing: antialiased;
-}
-
-button,
-input,
-select,
-textarea {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-img,
-svg {
-  max-width: 100%;
-  display: block;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
 }
 
 /* ============================================
-   3. TIPOGRAFIA
-   ============================================ */
+   4. TIPOGRAFIA
+============================================ */
 
 h1,
 h2,
@@ -152,149 +138,61 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--cor-primaria);
-  font-weight: var(--peso-semi);
+  font-family: var(--fonte-titulos);
+  font-weight: 700;
   line-height: 1.3;
+  color: var(--cor-texto);
 }
 
-h1 {
-  font-size: var(--fonte-titulo-grande);
+p,
+span,
+label,
+input,
+textarea,
+select,
+button {
+  font-family: var(--fonte-principal);
 }
 
-h2 {
-  font-size: var(--fonte-titulo);
-}
-
-h3 {
-  font-size: var(--fonte-grande);
-}
-
-h4 {
-  font-size: var(--fonte-media);
-}
-
-p {
-  color: var(--cor-texto-secundario);
-}
-
-small {
-  font-size: var(--fonte-pequena);
+button {
+  cursor: pointer;
 }
 
 /* ============================================
-   4. LINKS
-   ============================================ */
+   5. ELEMENTOS GERAIS
+============================================ */
 
 a {
-  transition: color var(--transicao-padrao);
+  color: var(--cor-primaria);
+  text-decoration: none;
+  transition: color var(--transicao-rapida);
 }
 
 a:hover {
-  color: var(--cor-secundaria);
+  color: var(--cor-primaria-hover);
 }
 
-/* ============================================
-   5. CAMPOS DE FORMULÁRIO
-   ============================================ */
+img {
+  max-width: 100%;
+  display: block;
+}
 
 input,
+textarea,
 select,
-textarea {
-  width: 100%;
-  padding: 11px 14px;
-  color: var(--cor-texto);
-  background-color: var(--cor-fundo-secundario);
-  border: 1px solid var(--cor-borda-forte);
-  border-radius: var(--raio-medio);
-  outline: none;
-  transition:
-    border-color var(--transicao-padrao),
-    box-shadow var(--transicao-padrao);
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: var(--cor-texto-claro);
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-  border-color: var(--cor-secundaria);
-  box-shadow: 0 0 0 3px rgba(25, 118, 165, 0.12);
-}
-
-textarea {
-  resize: vertical;
-  min-height: 100px;
-}
-
-input:disabled,
-select:disabled,
-textarea:disabled {
-  background-color: var(--cor-fundo-terciario);
-  color: var(--cor-texto-claro);
-  cursor: not-allowed;
-}
-
-/* ============================================
-   6. BOTÕES
-   ============================================ */
-
 button {
-  border: none;
-  transition:
-    background-color var(--transicao-padrao),
-    color var(--transicao-padrao),
-    border-color var(--transicao-padrao),
-    box-shadow var(--transicao-padrao);
+  font-size: inherit;
 }
 
-button:focus-visible,
-a:focus-visible {
-  outline: 3px solid rgba(25, 118, 165, 0.35);
-  outline-offset: 2px;
-}
-
-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+input,
+textarea,
+select {
+  color: var(--cor-texto);
 }
 
 /* ============================================
-   7. SELEÇÃO DE TEXTO
-   ============================================ */
-
-::selection {
-  color: var(--cor-texto-invertido);
-  background-color: var(--cor-secundaria);
-}
-
-/* ============================================
-   8. BARRA DE ROLAGEM
-   ============================================ */
-
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: var(--cor-fundo-terciario);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #b9c8d2;
-  border-radius: var(--raio-circular);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: var(--cor-texto-claro);
-}
-
-/* ============================================
-   9. CLASSES UTILITÁRIAS
-   ============================================ */
+   6. UTILITÁRIOS
+============================================ */
 
 .texto-primario {
   color: var(--cor-primaria);
@@ -302,10 +200,6 @@ button:disabled {
 
 .texto-secundario {
   color: var(--cor-texto-secundario);
-}
-
-.texto-claro {
-  color: var(--cor-texto-claro);
 }
 
 .texto-sucesso {
@@ -316,8 +210,8 @@ button:disabled {
   color: var(--cor-erro);
 }
 
-.texto-aviso {
-  color: var(--cor-aviso);
+.texto-alerta {
+  color: var(--cor-alerta);
 }
 
 .fundo-primario {
@@ -325,61 +219,5 @@ button:disabled {
 }
 
 .fundo-secundario {
-  background-color: var(--cor-fundo-secundario);
-}
-
-.fundo-sucesso {
-  background-color: var(--cor-sucesso-clara);
-}
-
-.fundo-erro {
-  background-color: var(--cor-erro-clara);
-}
-
-.fundo-aviso {
-  background-color: var(--cor-aviso-clara);
-}
-
-.oculto {
-  display: none !important;
-}
-
-.texto-centralizado {
-  text-align: center;
-}
-
-.largura-total {
-  width: 100%;
-}
-
-/* ============================================
-   10. RESPONSIVIDADE GLOBAL
-   ============================================ */
-
-@media (max-width: 768px) {
-  html {
-    font-size: 15px;
-  }
-
-  h1 {
-    font-size: 1.55rem;
-  }
-
-  h2 {
-    font-size: 1.3rem;
-  }
-
-  :root {
-    --largura-sidebar: 240px;
-  }
-}
-
-@media (max-width: 480px) {
-  html {
-    font-size: 14px;
-  }
-
-  body {
-    overflow-x: hidden;
-  }
+  background-color: var(--cor-secundaria);
 }
