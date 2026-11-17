@@ -149,14 +149,17 @@
             </div>
 
             <div class="status-prioridade-lead">
-              <span id="prioridadeLead" class="badge badge-media">Média</span>
-              <span id="statusLead" class="badge badge-novo">Novo</span>
+              <span id="prioridadeLead" class="badge badge-media"> Média </span>
+
+              <span id="statusLead" class="badge badge-novo"> Novo </span>
             </div>
           </section>
 
           <!-- GRADE DE INFORMAÇÕES -->
           <div class="grade-detalhes-lead">
+            <!-- COLUNA PRINCIPAL -->
             <div class="coluna-detalhes-lead">
+              <!-- INFORMAÇÕES DE CONTATO -->
               <section class="cartao-detalhes">
                 <h3>Informações de contato</h3>
 
@@ -183,8 +186,9 @@
                 </div>
               </section>
 
+              <!-- INFORMAÇÕES DE REGISTRO -->
               <section class="cartao-detalhes">
-                <h3>Informações comerciais</h3>
+                <h3>Informações de registro</h3>
 
                 <div class="informacoes-lead">
                   <div class="informacao-lead">
@@ -207,6 +211,13 @@
                     <p id="dataAtualizacaoLead">--</p>
                   </div>
                 </div>
+
+                <!-- IDs mantidos para compatibilidade com o JavaScript antigo -->
+                <div hidden>
+                  <span id="idLeadResumo">--</span>
+                  <span id="dataCadastroResumo">--</span>
+                  <span id="dataAtualizacaoResumo">--</span>
+                </div>
               </section>
 
               <!-- CLASSIFICAÇÃO DA IA -->
@@ -215,7 +226,9 @@
 
                 <div class="prioridade-ia">
                   <h3>Prioridade identificada</h3>
+
                   <p class="prioridade-valor" id="prioridadeIA">--</p>
+
                   <p><strong>Justificativa:</strong></p>
 
                   <p id="justificativaLead">
@@ -225,6 +238,7 @@
 
                 <div class="abordagem-sugerida">
                   <h3>Sugestão de abordagem inicial</h3>
+
                   <p id="abordagemLead">Nenhuma sugestão disponível.</p>
                 </div>
               </section>
@@ -243,6 +257,7 @@
                 <div class="cabecalho-historico-contatos">
                   <div>
                     <h3>Histórico de contatos</h3>
+
                     <p>
                       Acompanhe as tentativas de contato realizadas com este
                       lead.
@@ -268,6 +283,7 @@
 
             <!-- COLUNA LATERAL -->
             <div class="coluna-detalhes-lead">
+              <!-- GERENCIAR STATUS -->
               <section class="cartao-detalhes">
                 <h3>Gerenciar status</h3>
 
@@ -310,7 +326,9 @@
                   </div>
 
                   <div class="campo-formulario">
-                    <label for="resultadoContato">Resultado da tentativa</label>
+                    <label for="resultadoContato">
+                      Resultado da tentativa
+                    </label>
 
                     <select id="resultadoContato" name="resultado" required>
                       <option value="">Selecione o resultado</option>
@@ -345,27 +363,6 @@
 
                   <p id="mensagemContato" aria-live="polite"></p>
                 </form>
-              </section>
-
-              <section class="cartao-detalhes">
-                <h3>Informações do registro</h3>
-
-                <div class="metadados-lead">
-                  <p>
-                    <span>Identificador:</span>
-                    <strong id="idLeadResumo">--</strong>
-                  </p>
-
-                  <p>
-                    <span>Cadastrado em:</span>
-                    <strong id="dataCadastroResumo">--</strong>
-                  </p>
-
-                  <p>
-                    <span>Atualizado em:</span>
-                    <strong id="dataAtualizacaoResumo">--</strong>
-                  </p>
-                </div>
               </section>
             </div>
           </div>
