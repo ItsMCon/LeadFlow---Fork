@@ -1,0 +1,16 @@
+{
+  "name": "ai-service",
+  "version": "1.0.0",
+  "description": "Serviço de inteligência artificial do LeadFlow",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^18.0.10"
+  }
+}
