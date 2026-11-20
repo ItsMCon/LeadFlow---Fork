@@ -45,17 +45,17 @@
 
 :root {
   /* Cores principais Focus */
-  --cor-primaria: #0032b9;
-  --cor-primaria-hover: #002a9c;
-  --cor-primaria-light: #eaf0ff;
+  --cor-primaria: #f6a52d;
+  --cor-primaria-hover: #d58a1f;
+  --cor-primaria-light: #fff3dc;
 
-  --cor-secundaria: #0067ec;
-  --cor-secundaria-hover: #0055c7;
-  --cor-secundaria-light: #eaf3ff;
+  --cor-secundaria: #d58a1f;
+  --cor-secundaria-hover: #b87513;
+  --cor-secundaria-light: #fff0d5;
 
   /* Cor de destaque */
-  --cor-destaque: #29dbe2;
-  --cor-destaque-light: #e5fbfc;
+  --cor-destaque: #fbe23e;
+  --cor-destaque-light: #fffbe0;
 
   /* Cores de apoio */
   --cor-apoio-roxo: #8b5fa4;
@@ -67,18 +67,18 @@
   --cor-apoio-magenta: #b41252;
 
   /* Cores de texto */
-  --cor-texto: #172b3a;
-  --cor-texto-secundario: #495766;
-  --cor-texto-claro: #8293a0;
+  --cor-texto: #292929;
+  --cor-texto-secundario: #626262;
+  --cor-texto-claro: #929292;
 
   /* Fundos */
-  --cor-fundo: #f5f7fa;
-  --cor-fundo-secundario: #eaf0f4;
+  --cor-fundo: #f7f7f7;
+  --cor-fundo-secundario: #f1f1f1;
   --cor-branco: #ffffff;
 
   /* Bordas */
-  --cor-borda: #dce4ea;
-  --cor-borda-forte: #c5d1da;
+  --cor-borda: #e5e5e5;
+  --cor-borda-forte: #d0d0d0;
 
   /* Estados */
   --cor-sucesso: #16835d;
@@ -163,13 +163,13 @@ button {
 ============================================ */
 
 a {
-  color: var(--cor-primaria);
+  color: var(--cor-secundaria);
   text-decoration: none;
   transition: color var(--transicao-rapida);
 }
 
 a:hover {
-  color: var(--cor-primaria-hover);
+  color: var(--cor-secundaria-hover);
 }
 
 img {
@@ -219,5 +219,5 @@ select {
 }
 
 .fundo-secundario {
-  background-color: var(--cor-secundaria);
+  background-color: var(--cor-secundaria-light);
 }

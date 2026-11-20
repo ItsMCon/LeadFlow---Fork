@@ -11,160 +11,148 @@
   min-height: 100vh;
   min-height: 100dvh;
   margin: 0;
-  background-color: var(--cor-fundo-secundario);
-  font-family: var(--fonte-principal);
+  padding: 40px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #f6a52d;
+  font-family: var(--fonte-principal, Arial, sans-serif);
+}
+
+.pagina-login *,
+.pagina-login *::before,
+.pagina-login *::after {
+  box-sizing: border-box;
 }
 
 .login-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
-  overflow: hidden;
+  min-height: calc(100vh - 80px);
+  min-height: calc(100dvh - 80px);
 }
 
 /* ============================================
-   2. PAINEL DE IDENTIDADE VISUAL
+   2. PAINEL PRINCIPAL
 ============================================ */
 
-.login-identidade {
+.login-painel {
+  width: 100%;
+  max-width: 900px;
+  min-height: 680px;
+
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 100%;
-  padding: 65px 70px;
-  box-sizing: border-box;
-  background: linear-gradient(145deg, #0032b9 0%, #002a9c 55%, #001f78 100%);
-  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+
+  padding: 55px 75px;
+
+  background-color: #ffffff;
+  border: none;
+  border-radius: 14px;
+
+  box-shadow: 0 12px 40px rgba(80, 45, 5, 0.14);
 }
 
-.login-identidade-conteudo {
+.login-conteudo {
+  width: 100%;
+  max-width: 590px;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  flex: 1;
+  align-items: center;
 }
 
 /* ============================================
-   3. MARCA
+   3. LOGO FOCUS
 ============================================ */
 
 .login-marca {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
+  width: 100%;
 
-.login-marca-nome {
-  color: #ffffff;
-  font-family: var(--fonte-titulos);
-  font-size: 32px;
-  font-weight: 700;
-  letter-spacing: 2px;
-}
-
-.login-marca-divisor {
-  width: 1px;
-  height: 32px;
-  background-color: rgba(255, 255, 255, 0.45);
-}
-
-.login-marca-produto {
-  color: #dce7ff;
-  font-family: var(--fonte-principal);
-  font-size: 20px;
-  font-weight: 700;
-}
-
-/* ============================================
-   4. TEXTO INSTITUCIONAL
-============================================ */
-
-.login-identidade-texto {
-  max-width: 600px;
-  margin-top: auto;
-  margin-bottom: auto;
-  padding: 80px 0;
-}
-
-.login-identidade-texto h1 {
-  max-width: 550px;
-  margin: 0 0 28px;
-  color: #ffffff;
-  font-family: var(--fonte-titulos);
-  font-size: clamp(38px, 4vw, 58px);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -1.5px;
-}
-
-.login-identidade-texto p {
-  max-width: 490px;
-  margin: 0;
-  color: #dce7ff;
-  font-family: var(--fonte-principal);
-  font-size: 19px;
-  line-height: 1.8;
-}
-
-/* ============================================
-   5. RODAPÉ INSTITUCIONAL
-============================================ */
-
-.login-identidade-rodape {
-  color: #c5d5ff;
-  font-family: var(--fonte-principal);
-  font-size: 13px;
-}
-
-/* ============================================
-   6. PAINEL DE AUTENTICAÇÃO
-============================================ */
-
-.login-formulario-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 0;
-  min-height: 100%;
-  padding: 70px;
-  box-sizing: border-box;
-  background-color: #f5f7fa;
+
+  margin-bottom: 18px;
 }
 
-.login-formulario-conteudo {
-  width: 100%;
-  max-width: 540px;
+.login-logo-focus {
+  display: block;
+
+  width: 300px;
+  max-width: 100%;
+  height: auto;
+
+  object-fit: contain;
+  background: transparent;
+  border: none;
+  padding: 0;
+  border-radius: 0;
 }
 
 /* ============================================
-   7. TÍTULO
+   4. IDENTIFICAÇÃO DO PRODUTO
+============================================ */
+
+.login-marca::after {
+  content: none;
+}
+
+.login-produto {
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 25px;
+
+  text-align: center;
+}
+
+.login-produto span {
+  color: #d58a1f;
+  font-family: var(--fonte-titulos, Arial, sans-serif);
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* ============================================
+   5. TÍTULO
 ============================================ */
 
 .login-titulo {
-  margin-bottom: 48px;
+  width: 100%;
+  margin-bottom: 38px;
+
+  text-align: center;
 }
 
-.login-titulo h2 {
-  margin: 0 0 14px;
-  color: #0032b9;
-  font-family: var(--fonte-titulos);
-  font-size: 40px;
+.login-titulo h1 {
+  margin: 0 0 12px;
+
+  color: #202020;
+  font-family: var(--fonte-titulos, Georgia, serif);
+  font-size: 44px;
   font-weight: 700;
+  line-height: 1.2;
   letter-spacing: -1px;
 }
 
 .login-titulo p {
   margin: 0;
-  color: #495766;
-  font-family: var(--fonte-principal);
-  font-size: 18px;
+
+  color: #777777;
+  font-family: var(--fonte-principal, Arial, sans-serif);
+  font-size: 17px;
   line-height: 1.6;
 }
 
 /* ============================================
-   8. CAMPOS DO FORMULÁRIO
+   6. FORMULÁRIO
 ============================================ */
 
 #formularioLogin {
@@ -172,52 +160,62 @@
 }
 
 #formularioLogin .campo-formulario {
-  margin-bottom: 30px;
+  width: 100%;
+  margin-bottom: 25px;
 }
 
 #formularioLogin label {
   display: block;
-  margin-bottom: 12px;
-  color: #172b3a;
-  font-family: var(--fonte-principal);
+  margin-bottom: 10px;
+
+  color: #333333;
+  font-family: var(--fonte-principal, Arial, sans-serif);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 #formularioLogin input {
-  box-sizing: border-box;
-  width: 100%;
-  min-height: 62px;
-  padding: 17px 19px;
-  border: 1px solid #c5d1da;
-  border-radius: var(--raio-medio);
-  background-color: #ffffff;
-  color: #172b3a;
-  font-family: var(--fonte-principal);
-  font-size: 16px;
-  outline: none;
-  transition:
-    border-color var(--transicao-rapida),
-    box-shadow var(--transicao-rapida);
-}
+  display: block;
 
-#formularioLogin input:focus {
-  border-color: #0067ec;
-  box-shadow: 0 0 0 4px rgba(0, 103, 236, 0.12);
+  width: 100%;
+  min-height: 58px;
+  padding: 15px 18px;
+
+  border: 1px solid #d5d5d5;
+  border-radius: 7px;
+
+  background-color: #ffffff;
+  color: #252525;
+
+  font-family: var(--fonte-principal, Arial, sans-serif);
+  font-size: 16px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 #formularioLogin input::placeholder {
-  color: #8293a0;
+  color: #a0a0a0;
+}
+
+#formularioLogin input:focus {
+  border-color: #f6a52d;
+  box-shadow: 0 0 0 3px rgba(246, 165, 45, 0.17);
 }
 
 /* ============================================
-   9. CAMPO DE SENHA
+   7. CAMPO DE SENHA
 ============================================ */
 
 .campo-senha {
   position: relative;
+
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .campo-senha input {
@@ -226,45 +224,57 @@
 
 .botao-mostrar-senha {
   position: absolute;
-  right: 15px;
+  right: 13px;
+
   padding: 8px 10px;
+
   border: none;
   background: transparent;
-  color: #0067ec;
-  font-family: var(--fonte-principal);
+
+  color: #a66b18;
+  font-family: var(--fonte-principal, Arial, sans-serif);
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
+
   cursor: pointer;
 }
 
 .botao-mostrar-senha:hover {
-  color: #0032b9;
+  color: #754600;
 }
 
 /* ============================================
-   10. BOTÃO DE LOGIN
+   8. BOTÃO DE LOGIN
 ============================================ */
 
 .botao-login {
+  display: block;
+
   width: 100%;
-  min-height: 62px;
+  min-height: 58px;
   margin-top: 12px;
+  padding: 15px 20px;
+
   border: none;
-  border-radius: var(--raio-medio);
-  background-color: #0032b9;
-  color: #ffffff;
-  font-family: var(--fonte-principal);
+  border-radius: 7px;
+
+  background-color: #fbe23e;
+  color: #29230a;
+
+  font-family: var(--fonte-principal, Arial, sans-serif);
   font-size: 17px;
   font-weight: 700;
+
   cursor: pointer;
+
   transition:
-    background-color var(--transicao-rapida),
-    transform var(--transicao-rapida),
-    opacity var(--transicao-rapida);
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .botao-login:hover {
-  background-color: #002a9c;
+  background-color: #f2d52b;
 }
 
 .botao-login:active {
@@ -277,21 +287,24 @@
 }
 
 /* ============================================
-   11. MENSAGENS
+   9. MENSAGENS
 ============================================ */
 
 #formularioLogin .mensagem-erro,
 #formularioLogin .mensagem-sucesso {
-  margin-top: 16px;
-  padding: 14px;
-  border-radius: var(--raio-medio);
-  font-family: var(--fonte-principal);
+  width: 100%;
+  margin-top: 15px;
+  padding: 13px 15px;
+
+  border-radius: 7px;
+
+  font-family: var(--fonte-principal, Arial, sans-serif);
   font-size: 14px;
   line-height: 1.5;
 }
 
 #formularioLogin .mensagem-erro {
-  background-color: #fcedef;
+  background-color: #fcedf0;
   color: #c43d48;
   border: 1px solid #f2c5ca;
 }
@@ -303,177 +316,181 @@
 }
 
 /* ============================================
-   12. ELEMENTOS OCULTOS
+   10. RODAPÉ
 ============================================ */
 
-[hidden] {
+.login-rodape {
+  width: 100%;
+  margin-top: 30px;
+
+  color: #888888;
+  font-family: var(--fonte-principal, Arial, sans-serif);
+  font-size: 13px;
+  line-height: 1.6;
+
+  text-align: center;
+}
+
+.login-rodape p {
+  margin: 0;
+}
+
+/* ============================================
+   11. ELEMENTOS OCULTOS
+============================================ */
+
+.pagina-login [hidden] {
   display: none !important;
 }
 
 /* ============================================
-   13. ACESSIBILIDADE
+   12. ACESSIBILIDADE
 ============================================ */
 
 .botao-mostrar-senha:focus-visible,
 .botao-login:focus-visible {
-  outline: 3px solid #29dbe2;
+  outline: 3px solid #d69a24;
   outline-offset: 4px;
 }
 
 /* ============================================
-   14. RODAPÉ DO LOGIN
+   13. RESPONSIVIDADE - TELAS MÉDIAS
 ============================================ */
 
-.login-rodape {
-  margin-top: 35px;
-  color: #8293a0;
-  font-family: var(--fonte-principal);
-  font-size: 13px;
-  line-height: 1.7;
-  text-align: center;
-}
-
-/* ============================================
-   15. LOGOTIPO FOCUS
-============================================ */
-
-.login-logo-focus {
-  display: block;
-  flex-shrink: 0;
-  width: 280px;
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-
-  /* Preserva a transparência original do PNG */
-  background-color: transparent;
-  padding: 0;
-  border: none;
-  border-radius: 0;
-}
-
-/* ============================================
-   16. RESPONSIVIDADE - TELAS MÉDIAS
-============================================ */
-
-@media (max-width: 1100px) {
-  .login-identidade {
-    padding: 50px 40px;
+@media (max-width: 900px) {
+  .pagina-login {
+    padding: 30px 20px;
   }
 
-  .login-formulario-container {
-    padding: 50px 40px;
+  .login-container {
+    min-height: calc(100vh - 60px);
+    min-height: calc(100dvh - 60px);
   }
 
-  .login-identidade-texto h1 {
-    font-size: 40px;
-  }
-
-  .login-titulo h2 {
-    font-size: 34px;
+  .login-painel {
+    max-width: 720px;
+    min-height: 620px;
+    padding: 50px 55px;
   }
 
   .login-logo-focus {
-    width: 240px;
+    width: 260px;
   }
 }
 
 /* ============================================
-   17. RESPONSIVIDADE - TABLETS E CELULARES
+   14. RESPONSIVIDADE - CELULARES
 ============================================ */
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
+  .pagina-login {
+    padding: 18px 12px;
+  }
+
   .login-container {
-    grid-template-columns: 1fr;
-    overflow: visible;
+    min-height: calc(100vh - 36px);
+    min-height: calc(100dvh - 36px);
   }
 
-  .login-identidade {
+  .login-painel {
     min-height: auto;
-    padding: 35px 30px;
+    padding: 42px 25px;
+    border-radius: 12px;
   }
 
-  .login-identidade-texto {
-    padding: 45px 0 35px;
+  .login-logo-focus {
+    width: 220px;
   }
 
-  .login-identidade-texto h1 {
-    font-size: 34px;
+  .login-marca {
+    margin-bottom: 15px;
   }
 
-  .login-identidade-texto p {
-    font-size: 16px;
+  .login-produto {
+    margin-bottom: 22px;
   }
 
-  .login-identidade-rodape {
-    margin-top: 10px;
-  }
-
-  .login-formulario-container {
-    min-height: auto;
-    padding: 65px 35px;
-  }
-
-  .login-formulario-conteudo {
-    max-width: 560px;
+  .login-produto span {
+    font-size: 23px;
   }
 
   .login-titulo {
-    margin-bottom: 35px;
+    margin-bottom: 30px;
+  }
+
+  .login-titulo h1 {
+    font-size: 36px;
+  }
+
+  .login-titulo p {
+    font-size: 15px;
+  }
+
+  #formularioLogin .campo-formulario {
+    margin-bottom: 21px;
+  }
+
+  #formularioLogin input {
+    min-height: 54px;
+    font-size: 15px;
+  }
+
+  .botao-login {
+    min-height: 54px;
+  }
+
+  .login-rodape {
+    margin-top: 25px;
+    font-size: 12px;
+  }
+}
+
+/* ============================================
+   15. CELULARES PEQUENOS
+============================================ */
+
+@media (max-width: 380px) {
+  .login-painel {
+    padding: 35px 19px;
+  }
+
+  .login-logo-focus {
+    width: 190px;
+  }
+
+  .login-titulo h1 {
+    font-size: 32px;
+  }
+}
+
+/* ============================================
+   16. TELAS COM POUCA ALTURA
+============================================ */
+
+@media (max-height: 700px) and (min-width: 601px) {
+  .pagina-login {
+    align-items: flex-start;
+  }
+
+  .login-container {
+    min-height: auto;
+  }
+
+  .login-painel {
+    min-height: 0;
+    padding-top: 35px;
+    padding-bottom: 35px;
   }
 
   .login-logo-focus {
     width: 230px;
   }
-}
 
-/* ============================================
-   18. RESPONSIVIDADE - CELULARES PEQUENOS
-============================================ */
-
-@media (max-width: 480px) {
-  .login-identidade {
-    padding: 28px 24px;
+  .login-marca {
+    margin-bottom: 15px;
   }
 
-  .login-marca-nome {
-    font-size: 27px;
-  }
-
-  .login-marca-produto {
-    font-size: 17px;
-  }
-
-  .login-identidade-texto {
-    padding: 35px 0;
-  }
-
-  .login-identidade-texto h1 {
-    font-size: 30px;
-  }
-
-  .login-formulario-container {
-    padding: 45px 24px;
-  }
-
-  .login-titulo h2 {
-    font-size: 29px;
-  }
-
-  .login-titulo p {
-    font-size: 16px;
-  }
-
-  #formularioLogin input {
-    min-height: 56px;
-    font-size: 15px;
-  }
-
-  .botao-login {
-    min-height: 56px;
-  }
-
-  .login-logo-focus {
-    width: 210px;
+  .login-titulo {
+    margin-bottom: 25px;
   }
 }

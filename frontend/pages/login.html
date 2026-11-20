@@ -17,55 +17,34 @@
 
   <body class="pagina-login">
     <main class="login-container">
-      <!-- PAINEL DE IDENTIDADE VISUAL -->
-      <section class="login-identidade">
-        <div class="login-identidade-conteudo">
-          <!-- MARCA FOCUS E LEADFLOW -->
+      <!-- PAINEL PRINCIPAL DE LOGIN -->
+      <section class="login-painel" aria-labelledby="tituloLogin">
+        <div class="login-conteudo">
+          <!-- LOGO FOCUS -->
           <div class="login-marca">
             <img
               src="../assets/images/logo-focus-2.png"
               alt="FOCUS Consultoria"
               class="login-logo-focus"
             />
-
-            <span class="login-marca-divisor"></span>
-
-            <span class="login-marca-produto">LeadFlow</span>
           </div>
 
-          <!-- TEXTO INSTITUCIONAL -->
-          <div class="login-identidade-texto">
-            <h1>Gestão inteligente de leads.</h1>
-
-            <p>
-              Centralize contatos, acompanhe oportunidades e transforme
-              informações em melhores decisões.
-            </p>
+          <!-- IDENTIFICAÇÃO DO SISTEMA -->
+          <div class="login-produto">
+            <span>LeadFlow</span>
           </div>
-        </div>
 
-        <!-- RODAPÉ INSTITUCIONAL -->
-        <div class="login-identidade-rodape">
-          <span>LeadFlow | Plataforma de gerenciamento de leads</span>
-        </div>
-      </section>
-
-      <!-- PAINEL DE AUTENTICAÇÃO -->
-      <section class="login-formulario-container" aria-labelledby="tituloLogin">
-        <div class="login-formulario-conteudo">
           <!-- TÍTULO -->
           <div class="login-titulo">
-            <h2 id="tituloLogin">Bem-vindo!</h2>
-
+            <h1 id="tituloLogin">Login</h1>
             <p>Acesse sua conta para continuar.</p>
           </div>
 
-          <!-- FORMULÁRIO DE LOGIN -->
+          <!-- FORMULÁRIO -->
           <form id="formularioLogin" novalidate>
             <!-- E-MAIL -->
             <div class="campo-formulario">
               <label for="emailLogin">E-mail</label>
-
               <input
                 type="email"
                 id="emailLogin"

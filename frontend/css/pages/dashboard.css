@@ -80,8 +80,8 @@
   height: 40px;
   border: 1px solid var(--cor-borda);
   border-radius: var(--raio-pequeno);
-  background-color: #ffffff;
-  color: #0032b9;
+  background-color: var(--cor-branco);
+  color: var(--cor-texto);
   font-size: 20px;
   cursor: pointer;
   transition:
@@ -91,8 +91,9 @@
 }
 
 .botao-menu:hover {
-  background-color: #eaf0ff;
-  border-color: #0032b9;
+  border-color: var(--cor-primaria);
+  background-color: var(--cor-destaque-light);
+  color: var(--cor-texto);
 }
 
 /* ============================================
@@ -112,15 +113,17 @@
   padding: 22px;
   border: 1px solid var(--cor-borda);
   border-radius: var(--raio-medio);
-  background-color: #ffffff;
+  background-color: var(--cor-branco);
   box-shadow: var(--sombra-card);
   transition:
     transform var(--transicao-rapida),
-    box-shadow var(--transicao-rapida);
+    box-shadow var(--transicao-rapida),
+    border-color var(--transicao-rapida);
 }
 
 .indicador-card:hover {
   transform: translateY(-2px);
+  border-color: var(--cor-primaria);
   box-shadow: var(--sombra-card-hover);
 }
 
@@ -136,7 +139,7 @@
 .indicador-card strong,
 .indicador-card .indicador-valor {
   display: block;
-  color: #0032b9;
+  color: var(--cor-texto);
   font-family: var(--fonte-titulos);
   font-size: 30px;
   font-weight: 700;
@@ -160,7 +163,7 @@
   padding: 24px;
   border: 1px solid var(--cor-borda);
   border-radius: var(--raio-medio);
-  background-color: #ffffff;
+  background-color: var(--cor-branco);
   box-shadow: var(--sombra-card);
 }
 
@@ -198,23 +201,32 @@
   gap: 8px;
   min-height: 42px;
   padding: 10px 17px;
-  border: 1px solid #0032b9;
+  border: 1px solid var(--cor-primaria);
   border-radius: var(--raio-pequeno);
-  background-color: #0032b9;
-  color: #ffffff;
+  background-color: var(--cor-primaria);
+  color: var(--cor-texto);
   font-family: var(--fonte-principal);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
   cursor: pointer;
   transition:
     background-color var(--transicao-rapida),
-    border-color var(--transicao-rapida);
+    border-color var(--transicao-rapida),
+    color var(--transicao-rapida),
+    box-shadow var(--transicao-rapida);
 }
 
 .botao-primario:hover {
-  background-color: #002a9c;
-  border-color: #002a9c;
+  border-color: var(--cor-primaria-hover);
+  background-color: var(--cor-primaria-hover);
+  color: var(--cor-branco);
+  box-shadow: var(--sombra-card);
+}
+
+.botao-primario:focus-visible {
+  outline: 3px solid rgba(246, 165, 45, 0.3);
+  outline-offset: 3px;
 }
 
 .botao-secundario {
@@ -226,7 +238,7 @@
   padding: 9px 15px;
   border: 1px solid var(--cor-borda-forte);
   border-radius: var(--raio-pequeno);
-  background-color: #ffffff;
+  background-color: var(--cor-branco);
   color: var(--cor-texto);
   font-family: var(--fonte-principal);
   font-size: 13px;
@@ -239,9 +251,9 @@
 }
 
 .botao-secundario:hover {
-  background-color: #eaf3ff;
-  border-color: #0067ec;
-  color: #0032b9;
+  border-color: var(--cor-primaria);
+  background-color: var(--cor-destaque-light);
+  color: var(--cor-texto);
 }
 
 /* ============================================
@@ -263,7 +275,7 @@
   padding: 10px 14px;
   border: 1px solid var(--cor-borda-forte);
   border-radius: var(--raio-pequeno);
-  background-color: #ffffff;
+  background-color: var(--cor-branco);
   color: var(--cor-texto);
   font-family: var(--fonte-principal);
   font-size: 13px;
@@ -274,8 +286,8 @@
 }
 
 #pesquisaLeads:focus {
-  border-color: #0067ec;
-  box-shadow: 0 0 0 3px rgba(0, 103, 236, 0.12);
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 3px rgba(246, 165, 45, 0.16);
 }
 
 #pesquisaLeads::placeholder {
@@ -292,7 +304,7 @@
   padding: 9px 12px;
   border: 1px solid var(--cor-borda-forte);
   border-radius: var(--raio-pequeno);
-  background-color: #ffffff;
+  background-color: var(--cor-branco);
   color: var(--cor-texto);
   font-family: var(--fonte-principal);
   font-size: 13px;
@@ -306,8 +318,8 @@
 #filtroStatus:focus,
 #filtroPrioridade:focus,
 #filtroResponsavel:focus {
-  border-color: #0067ec;
-  box-shadow: 0 0 0 3px rgba(0, 103, 236, 0.12);
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 3px rgba(246, 165, 45, 0.16);
 }
 
 /* ============================================
@@ -329,7 +341,7 @@
 }
 
 .tabela-leads thead {
-  background-color: #f5f7fa;
+  background-color: var(--cor-fundo-secundario);
 }
 
 .tabela-leads th {
@@ -357,7 +369,7 @@
 }
 
 .tabela-leads tbody tr:hover {
-  background-color: #f5f7fa;
+  background-color: var(--cor-destaque-light);
 }
 
 /* ============================================
@@ -377,47 +389,49 @@
 }
 
 .badge-novo {
-  background-color: #eaf3ff;
-  color: #0067ec;
+  background-color: var(--cor-primaria-light);
+  color: var(--cor-secundaria-hover);
 }
 
 .badge-contato {
-  background-color: #fff4df;
-  color: #a96800;
+  background-color: var(--cor-secundaria-light);
+  color: var(--cor-alerta);
 }
 
 .badge-qualificacao {
-  background-color: #eaf0ff;
-  color: #0032b9;
+  background-color: #f1eaf6;
+  color: var(--cor-apoio-roxo);
 }
 
 .badge-convertido {
-  background-color: #eaf6ec;
-  color: #2f993d;
+  background-color: #e8f5ef;
+  color: var(--cor-sucesso);
 }
 
 .badge-perdido {
-  background-color: #fdedec;
-  color: #e53324;
+  background-color: #fcedf0;
+  color: var(--cor-erro);
 }
 
-/* Compatibilidade com registros antigos.
+/*
+   Compatibilidade com registros antigos.
    A prioridade atual deve ser apresentada como
-   posição relativa no ranking, não como categoria. */
+   posição relativa no ranking, não como categoria.
+*/
 
 .badge-alta {
-  background-color: #fdedec;
-  color: #e53324;
+  background-color: #fcedf0;
+  color: var(--cor-erro);
 }
 
 .badge-media {
-  background-color: #fff4df;
-  color: #a96800;
+  background-color: var(--cor-secundaria-light);
+  color: var(--cor-alerta);
 }
 
 .badge-baixa {
-  background-color: #eaf6ec;
-  color: #2f993d;
+  background-color: #e8f5ef;
+  color: var(--cor-sucesso);
 }
 
 /* ============================================
@@ -437,10 +451,10 @@
   min-width: 38px;
   min-height: 32px;
   padding: 6px 10px;
-  border: 1px solid #d5e1ff;
+  border: 1px solid var(--cor-borda);
   border-radius: var(--raio-pequeno);
-  background-color: #eaf0ff;
-  color: #0032b9;
+  background-color: var(--cor-primaria-light);
+  color: var(--cor-texto);
   font-family: var(--fonte-principal);
   font-size: 12px;
   font-weight: 600;
@@ -453,9 +467,9 @@
 }
 
 .botao-acao:hover {
-  background-color: #0067ec;
-  border-color: #0067ec;
-  color: #ffffff;
+  border-color: var(--cor-primaria);
+  background-color: var(--cor-primaria);
+  color: var(--cor-texto);
 }
 
 .botao-acao[aria-disabled="true"] {
@@ -479,10 +493,10 @@
 #erroCarregamento {
   margin: 15px 0;
   padding: 14px;
-  border: 1px solid #e53324;
+  border: 1px solid var(--cor-apoio-vermelho);
   border-radius: var(--raio-pequeno);
-  background-color: #fdedec;
-  color: #b42318;
+  background-color: #fcedf0;
+  color: var(--cor-erro);
   font-family: var(--fonte-principal);
   font-size: 13px;
 }

@@ -34,7 +34,7 @@ body {
   height: 100vh;
   padding: 24px 16px;
   background-color: var(--cor-primaria);
-  color: #ffffff;
+  color: #292929;
   z-index: 1000;
   overflow-y: auto;
   transform: translateX(-100%);
@@ -84,7 +84,7 @@ body {
 .sidebar-logo h1,
 .logo-container h1,
 .logo h1 {
-  color: #ffffff;
+  color: #292929;
   font-family: var(--fonte-titulos);
   font-size: 22px;
   font-weight: 700;
@@ -93,7 +93,7 @@ body {
 .sidebar-logo span,
 .logo-container span,
 .logo span {
-  color: #d6e2ff;
+  color: #5c3a0b;
   font-size: 11px;
 }
 
@@ -110,7 +110,7 @@ body {
 
 .nav-titulo {
   margin: 20px 10px 8px;
-  color: #b8c9f0;
+  color: #5c3a0b;
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
@@ -127,7 +127,7 @@ body {
   width: 100%;
   padding: 12px;
   border-radius: var(--raio-medio);
-  color: #e0e9ff;
+  color: #3d2b13;
   font-size: 14px;
   text-decoration: none;
   transition:
@@ -139,16 +139,16 @@ body {
 .sidebar-menu a:hover,
 .navegacao a:hover,
 .nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.35);
+  color: #292929;
 }
 
 .sidebar-navegacao a.ativo,
 .sidebar-menu a.ativo,
 .navegacao a.ativo,
 .nav-link.ativo {
-  background-color: var(--cor-secundaria);
-  color: #ffffff;
+  background-color: var(--cor-destaque);
+  color: #292929;
   font-weight: 700;
 }
 
@@ -167,8 +167,8 @@ body {
 .sidebar-rodape {
   margin-top: auto;
   padding: 16px 10px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
-  color: #d6e2ff;
+  border-top: 1px solid rgba(41, 41, 41, 0.2);
+  color: #5c3a0b;
   font-size: 12px;
 }
 
@@ -227,7 +227,7 @@ body {
 
 .cabecalho-titulo h1,
 .page-header h1 {
-  color: var(--cor-primaria);
+  color: var(--cor-secundaria);
   font-family: var(--fonte-titulos);
   font-size: 26px;
   font-weight: 700;
@@ -261,8 +261,8 @@ body {
   height: 40px;
   border: 1px solid var(--cor-borda);
   border-radius: var(--raio-medio);
-  background-color: var(--cor-fundo-secundario);
-  color: var(--cor-primaria);
+  background-color: var(--cor-branco);
+  color: var(--cor-secundaria);
   font-size: 20px;
   cursor: pointer;
   transition:
@@ -340,7 +340,7 @@ body {
 .menu-usuario a:hover,
 .menu-usuario button:hover {
   background-color: var(--cor-primaria-light);
-  color: var(--cor-primaria);
+  color: var(--cor-secundaria-hover);
 }
 
 /* ============================================
@@ -361,7 +361,7 @@ body {
 }
 
 .secao-titulo {
-  color: var(--cor-primaria);
+  color: var(--cor-secundaria);
   font-family: var(--fonte-titulos);
   font-size: 18px;
   font-weight: 700;

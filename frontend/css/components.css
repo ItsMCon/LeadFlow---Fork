@@ -37,11 +37,12 @@ button:disabled {
 
 .botao-primario {
   background-color: var(--cor-primaria);
-  color: #ffffff;
+  color: #292929;
 }
 
 .botao-primario:hover {
   background-color: var(--cor-primaria-hover);
+  color: #ffffff;
 }
 
 .botao-secundario {
@@ -66,7 +67,7 @@ button:disabled {
 
 .botao-texto {
   background: transparent;
-  color: var(--cor-primaria);
+  color: var(--cor-secundaria);
   padding: 6px 10px;
 }
 
@@ -116,8 +117,8 @@ button:disabled {
 .campo-formulario input:focus,
 .campo-formulario select:focus,
 .campo-formulario textarea:focus {
-  border-color: var(--cor-secundaria);
-  box-shadow: 0 0 0 3px rgba(0, 103, 236, 0.12);
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 3px rgba(246, 165, 45, 0.16);
 }
 
 .campo-formulario textarea {
@@ -157,13 +158,13 @@ button:disabled {
   right: 12px;
   border: none;
   background: transparent;
-  color: var(--cor-primaria);
+  color: var(--cor-secundaria);
   font-size: 12px;
   font-weight: 700;
 }
 
 .botao-mostrar-senha:hover {
-  color: var(--cor-secundaria);
+  color: var(--cor-secundaria-hover);
 }
 
 /* ============================================
@@ -183,7 +184,7 @@ button:disabled {
 
 .mensagem-erro {
   color: var(--cor-erro);
-  background-color: #fcedef;
+  background-color: #fcedf0;
   border: 1px solid #f2c5ca;
 }
 
@@ -202,7 +203,7 @@ button:disabled {
 .mensagem-informativa {
   color: var(--cor-secundaria);
   background-color: var(--cor-secundaria-light);
-  border: 1px solid #b9ddeb;
+  border: 1px solid #f0d7ac;
 }
 
 /* ============================================
@@ -229,7 +230,7 @@ button:disabled {
   font-family: var(--fonte-titulos);
   font-size: 16px;
   font-weight: 700;
-  color: var(--cor-primaria);
+  color: var(--cor-secundaria);
 }
 
 .card-descricao {
@@ -267,7 +268,7 @@ button:disabled {
 .indicador-valor {
   display: block;
   margin-top: 8px;
-  color: var(--cor-primaria);
+  color: var(--cor-secundaria);
   font-family: var(--fonte-titulos);
   font-size: 28px;
   font-weight: 700;
@@ -296,8 +297,8 @@ button:disabled {
 }
 
 .badge-novo {
-  background-color: var(--cor-secundaria-light);
-  color: var(--cor-secundaria);
+  background-color: var(--cor-primaria-light);
+  color: var(--cor-secundaria-hover);
 }
 
 .badge-contato {
@@ -316,7 +317,7 @@ button:disabled {
 }
 
 .badge-perdido {
-  background-color: #fcedef;
+  background-color: #fcedf0;
   color: var(--cor-erro);
 }
 
@@ -325,7 +326,7 @@ button:disabled {
    ordenação, e não por categorias fixas. */
 
 .badge-alta {
-  background-color: #fcedef;
+  background-color: #fcedf0;
   color: var(--cor-erro);
 }
 
@@ -418,8 +419,8 @@ button:disabled {
 }
 
 .campo-pesquisa:focus {
-  border-color: var(--cor-secundaria);
-  box-shadow: 0 0 0 3px rgba(0, 103, 236, 0.12);
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 3px rgba(246, 165, 45, 0.16);
 }
 
 .campo-filtro {
@@ -436,7 +437,7 @@ button:disabled {
 }
 
 .campo-filtro:focus {
-  border-color: var(--cor-secundaria);
+  border-color: var(--cor-primaria);
 }
 
 /* ============================================
@@ -451,7 +452,7 @@ button:disabled {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background-color: rgba(15, 43, 64, 0.6);
+  background-color: rgba(41, 41, 41, 0.6);
 }
 
 .modal.aberto {
@@ -478,7 +479,7 @@ button:disabled {
 }
 
 .modal-titulo {
-  color: var(--cor-primaria);
+  color: var(--cor-secundaria);
   font-family: var(--fonte-titulos);
   font-size: 18px;
   font-weight: 700;
@@ -492,7 +493,7 @@ button:disabled {
 }
 
 .botao-fechar-modal:hover {
-  color: var(--cor-primaria);
+  color: var(--cor-secundaria);
 }
 
 body.modal-aberto {
@@ -527,7 +528,7 @@ body.modal-aberto {
   flex-shrink: 0;
   border-radius: 50%;
   background-color: var(--cor-primaria-light);
-  color: var(--cor-primaria);
+  color: var(--cor-secundaria-hover);
   font-size: 14px;
   font-weight: 700;
 }
@@ -553,39 +554,27 @@ body.modal-aberto {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 10px 0;
+  padding: 20px 10px;
   margin-bottom: 36px;
-
-  /* A marca fica diretamente sobre o fundo azul */
-  background-color: transparent;
+  background: transparent;
   border: none;
-  border-radius: 0;
 }
 
 .barra-lateral .logo-link {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
   width: 100%;
   text-decoration: none;
 }
 
 .barra-lateral .logo-imagem-focus {
   display: block;
-  width: 145px;
+  width: 170px;
   max-width: 100%;
-  height: 90px;
+  height: auto;
+  max-height: 150px;
   object-fit: contain;
-}
-
-.barra-lateral .logo-texto {
-  color: #ffffff;
-  font-family: var(--fonte-titulos);
-  font-size: 17px;
-  font-weight: 700;
-  text-align: center;
 }
 
 /* ============================================
@@ -632,36 +621,4 @@ body.modal-aberto {
   .barra-lateral .logo-imagem-focus {
     width: 105px;
   }
-}
-
-/* ============================================
-   LOGO FOCUS - SIDEBAR
-============================================ */
-
-.barra-lateral .logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 20px 10px;
-  margin-bottom: 36px;
-  background: transparent;
-  border: none;
-}
-
-.barra-lateral .logo-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  text-decoration: none;
-}
-
-.barra-lateral .logo-imagem-focus {
-  display: block;
-  width: 170px;
-  max-width: 100%;
-  height: auto;
-  max-height: 150px;
-  object-fit: contain;
 }
