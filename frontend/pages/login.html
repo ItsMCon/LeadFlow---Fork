@@ -16,8 +16,44 @@
   </head>
 
   <body class="pagina-login">
+    <!-- FUNDO GEOMÉTRICO -->
+    <svg
+      class="login-fundo-geometrico"
+      viewBox="0 0 1536 864"
+      preserveAspectRatio="xMidYMid slice"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <!-- TRIÂNGULOS PREENCHIDOS À ESQUERDA -->
+      <polygon points="0,790 310,205 675,864 0,864" fill="#F7E52F" />
+
+      <polygon points="165,864 400,455 640,864" fill="#F6A52D" />
+
+      <!-- TRIÂNGULOS CONTORNADOS À DIREITA -->
+      <polygon
+        points="940,675 1260,35 1580,675"
+        fill="none"
+        stroke="#E9A52F"
+        stroke-width="5"
+      />
+
+      <polygon
+        points="1010,625 1260,155 1510,625"
+        fill="none"
+        stroke="#F0DC32"
+        stroke-width="5"
+      />
+
+      <polygon
+        points="1105,575 1260,275 1415,575"
+        fill="none"
+        stroke="#E9A52F"
+        stroke-width="5"
+      />
+    </svg>
+
     <main class="login-container">
-      <!-- PAINEL PRINCIPAL DE LOGIN -->
+      <!-- PAINEL PRINCIPAL -->
       <section class="login-painel" aria-labelledby="tituloLogin">
         <div class="login-conteudo">
           <!-- LOGO FOCUS -->
@@ -34,7 +70,7 @@
             <span>LeadFlow</span>
           </div>
 
-          <!-- TÍTULO -->
+          <!-- DESCRIÇÃO -->
           <div class="login-titulo">
             <h1 id="tituloLogin">Login</h1>
             <p>Acesse sua conta para continuar.</p>
@@ -42,9 +78,9 @@
 
           <!-- FORMULÁRIO -->
           <form id="formularioLogin" novalidate>
-            <!-- E-MAIL -->
             <div class="campo-formulario">
               <label for="emailLogin">E-mail</label>
+
               <input
                 type="email"
                 id="emailLogin"
@@ -56,7 +92,6 @@
               />
             </div>
 
-            <!-- SENHA -->
             <div class="campo-formulario">
               <label for="senhaLogin">Senha</label>
 
